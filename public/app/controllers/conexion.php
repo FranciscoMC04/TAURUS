@@ -1,3 +1,2 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "TAURUS");
-
+$conexion = new mysqli("localhost:33065", "root", "", "TAURUS");
