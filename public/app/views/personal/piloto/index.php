@@ -59,9 +59,9 @@ $pilotos = $pilotoObj->index();
                                           echo htmlspecialchars($piloto['telefono'] ?? 'N/A');
                                           ?></td>
                     <td class="px-6 py-4">
-                      <a href="editarHotel.php?id=<?php
-                                                  // echo $hotel['id'];
-                                                  ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">
+                      <a href="update.php?licencia=<?php
+                                                    echo $piloto['licencia'];
+                                                    ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">
                         <i class="fas fa-edit"></i> Editar
                       </a>
                       <a href="eliminarHotel.php?id=<?php
@@ -87,7 +87,7 @@ $pilotos = $pilotoObj->index();
     </div>
 
     <div>
-      <a href="nuevoHotel.php" type="button"
+      <a href="new.php" type="button"
         class="fixed bottom-5 right-5 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
         <i class="fas fa-plus"></i>
       </a>

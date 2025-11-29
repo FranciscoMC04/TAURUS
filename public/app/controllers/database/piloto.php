@@ -1,8 +1,13 @@
 <?php
-// var_dump(__DIR__);
-// exit;
-require '../../../controllers/conexion.php';
+$archivoActual = basename($_SERVER['SCRIPT_FILENAME']);
 
+if ($archivoActual == 'index.php')
+  require '../../../controllers/conexion.php';
+elseif ($archivoActual == 'update.php') {
+  require '../../../controllers/conexion.php';
+} elseif ($archivoActual == 'piloto.php') {
+  require '../controllers/conexion.php';
+}
 class Piloto
 {
   private $conn;
@@ -13,10 +18,14 @@ class Piloto
   }
 
 
-  public function create($nombre, $licencia, $telefono)
+  public function create()
   {
+    $nombre = $_POST['nombre'];
+    $licencia = $_POST['licencia'];
+    $telefono = $_POST['telefono'];
+
     $stmt = $this->conn->prepare("INSERT INTO piloto (nombre, licencia, telefono) VALUES (?, ?, ?)");
-    $stmt->bind_param("sssi", $nombre, $licencia, $telefono);
+    $stmt->bind_param("sss", $nombre, $licencia, $telefono);
 
     if ($stmt->execute()) {
       $stmt->close();
@@ -45,7 +54,7 @@ class Piloto
   public function show($licencia)
   {
     $stmt = $this->conn->prepare("SELECT * FROM  piloto WHERE licencia = ?");
-    $stmt->bind_param("i", $licencia);
+    $stmt->bind_param("s", $licencia);
     $stmt->execute();
     $result = $stmt->get_result();
     $hotel = $result->fetch_assoc();
@@ -53,11 +62,13 @@ class Piloto
     return $hotel;
   }
 
-
-  public function update($nombre, $licencia, $telefono)
+  public function update()
   {
-    $stmt = $this->conn->prepare("UPDATE hotel SET nombre = ?, licencia = ?, telefono = ? WHERE licencia = ?");
-    $stmt->bind_param("sssii", $nombre, $licencia, $telefono);
+    $nombre = $_POST['nombre'];
+    $licencia = $_POST['licencia'];
+    $telefono = $_POST['telefono'];
+    $stmt = $this->conn->prepare("UPDATE piloto SET nombre = ?, telefono = ? WHERE licencia = ?");
+    $stmt->bind_param("sss", $nombre, $telefono, $licencia);
 
     if ($stmt->execute()) {
       $stmt->close();
@@ -66,7 +77,6 @@ class Piloto
     $stmt->close();
     return false;
   }
-
 
   public function delete($licencia)
   {
