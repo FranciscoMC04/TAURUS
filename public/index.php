@@ -1,4 +1,3 @@
 <?php
-header("Location: app/views/hotel/index.php");
+header("Location: ./log/dashboard.php");
 exit();
-?>

@@ -25,7 +25,7 @@
             <input type="password" class="w-full p-2 rounded mb-4 bg-white/30 text-white 
                               placeholder-white/60 focus:outline-none" placeholder="••••••••">
 
-            <a href="../app/views/hotel/index.php" class="w-full mt-2 bg-blue-600 hover:bg-blue-700 
+            <a href="" class="w-full mt-2 bg-blue-600 hover:bg-blue-700 
                                text-white font-semibold py-2 rounded-lg transition">
                 Ingresar
             </a>
@@ -33,7 +33,7 @@
 
             <p class="text-white text-center text-sm mt-4">
                 ¿No tienes cuenta?
-                <a href="../app/views/hotel/index.php" class="text-blue-300 hover:underline">Regístrate</a>
+                <a href="" class="text-blue-300 hover:underline">Regístrate</a>
             </p>
 
         </div>

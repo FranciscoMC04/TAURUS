@@ -1,45 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="dashboard.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-<head>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://kit.fontawesome.com/e2d71e4ca2.js" crossorigin="anonymous"></script>
-  <title>dashboard</title>
-</head>
+          <i class="fa-solid fa-gauge"></i>
+          <span class="ms-3">Dashboard</span>
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a href="../app/views/hotel/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-<body class="">
-  <?php include "nav.php"; ?>
+          <i class="fas fa-user-tie"></i>
+          <span class="ms-3">Hotel</span>
+        </a>
+      </li>
+      <li>
+        <a href="" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-  <div class="flex">
-    <aside class="w-64 h-screen bg-gray-800 text-white fixed top-0 left-0 pt-16">
-      <?php include "sidebar.php"; ?>
-    </aside>
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Restaurante</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-    <div class="ml-64 w-full pt-16 p-6 mt-6">
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Guias Turisticos</span>
+        </a>
+      </li>
 
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-        <div class="bg-white rounded shadow-lg px-6 py-4">
-          <div class="flex items-center">
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Terramozas</span>
+        </a>
+      </li>
+      <li>
+        <a href="../app/views/personal/piloto/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-            <div id="hola" class="ml-4 text-lg font-semibold uppercase">
-            </div>
-          </div>
-        </div>
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Piloto</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-        <div class="bg-white rounded shadow-lg px-6 py-4 flex items-center justify-center">
-          <h2 class="text-lg font-semibold uppercase">
-            Francisco Coder
-          </h2>
-        </div>
-      </div>
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Inscripción</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-    </div>
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Itinerario</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Consolidado de Viaje</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Bus</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Detalles bus</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Ficha</span>
+        </a>
+      </li>
+      <li>
+        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+
+          <i class="fa-solid fa-book"></i>
+          <span class="ms-3">Usuario</span>
+        </a>
+      </li>
+
+    </ul>
   </div>
-</body>
-<script src="../jquery/dashboard.js"></script>
-
-</html>
+</aside>
