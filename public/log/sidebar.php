@@ -10,7 +10,7 @@
       </li>
       <hr>
       <li>
-        <a href="../app/views/hotel/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/hotel/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <i class="fas fa-user-tie"></i>
           <span class="ms-3">Hotel</span>
@@ -39,7 +39,7 @@
         </a>
       </li>
       <li>
-        <a href="../app/views/personal/piloto/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/personal/piloto/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <i class="fa-solid fa-book"></i>
           <span class="ms-3">Piloto</span>
@@ -67,28 +67,28 @@
         </a>
       </li>
       <li>
-        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/bus/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <i class="fa-solid fa-book"></i>
           <span class="ms-3">Bus</span>
         </a>
-      </li>
+      </li> 
       <li>
-        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/detalle_bus/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <i class="fa-solid fa-book"></i>
           <span class="ms-3">Detalles bus</span>
         </a>
       </li>
       <li>
-        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/ficha/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <i class="fa-solid fa-book"></i>
           <span class="ms-3">Ficha</span>
         </a>
       </li>
       <li>
-        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/usuarios/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <i class="fa-solid fa-book"></i>
           <span class="ms-3">Usuario</span>

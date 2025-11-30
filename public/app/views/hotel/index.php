@@ -23,11 +23,13 @@ $hoteles = $hotelObj->index();
 
   <?php
   // include "nav.php"; 
+  include "../../../log/nav.php";  
   ?>
   <div class="flex">
     <aside class="w-64 h-screen bg-gray-800 text-white fixed top-0 left-0 pt-16">
       <?php
       // include "sidebar.php"; 
+       include "../../../log/sidebar.php";  
       ?>
     </aside>
 
