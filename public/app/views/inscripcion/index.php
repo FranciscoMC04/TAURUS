@@ -1,8 +1,8 @@
 <?php
-require '../../../controllers/database/piloto.php';
+require '../../controllers/database/inscripcion.php';
 
-$pilotoObj = new Piloto($conexion);
-$pilotos = $pilotoObj->index();
+$inscripcionObj = new inscripcion($conexion);
+$inscripciones = $inscripcionObj->index();
 ?>
 
 <!DOCTYPE html>
@@ -13,18 +13,18 @@ $pilotos = $pilotoObj->index();
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <script src="https://kit.fontawesome.com/e2d71e4ca2.js" crossorigin="anonymous"></script>
-  <title>Piloto</title>
+  <title>Inscripcion</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
 
   <?php
-  include "../../../../log/nav.php";
+  include "../../../log/nav.php";
   ?>
   <div class="flex">
     <aside class="w-64 h-screen bg-gray-800 text-white fixed top-0 left-0 pt-16">
       <?php
-      include "../../../../log/sidebar.php";
+      include "../../../log/sidebar.php";
       ?>
     </aside>
 
@@ -36,40 +36,45 @@ $pilotos = $pilotoObj->index();
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3">Nombre</th>
-                <th scope="col" class="px-6 py-3">Licencia</th>
-                <th scope="col" class="px-6 py-3">Telefono</th>
+                <th scope="col" class="px-6 py-3">Descripcion</th>
+                <th scope="col" class="px-6 py-3">Turista</th>
+                <th scope="col" class="px-6 py-3">Fecha de inscripcion</th>
+                <th scope="col" class="px-6 py-3">Estado</th>
                 <th scope="col" class="px-6 py-3">Action</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              if (count($pilotos) > 0) {
-                foreach ($pilotos as $piloto) {
+              if (count($inscripciones) > 0) {
+                foreach ($inscripciones as $inscripcion) {
 
               ?>
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="px-6 py-4"><?php
-                                          echo htmlspecialchars($piloto['nombre']);
+                                          echo htmlspecialchars($inscripcion['ficha']);
                                           ?></td>
                     <td class="px-6 py-4"><?php
-                                          echo htmlspecialchars($piloto['licencia'] ?? 'N/A');
+                                          echo htmlspecialchars($inscripcion['turista'] ?? 'N/A');
                                           ?></td>
                     <td class="px-6 py-4"><?php
-                                          echo htmlspecialchars($piloto['telefono'] ?? 'N/A');
+                                          echo htmlspecialchars($inscripcion['fecha_inscripcion'] ?? 'N/A');
+                                          ?></td>
+
+                    <td class="px-6 py-4"><?php
+                                          echo htmlspecialchars($inscripcion['estado'] ?? 'N/A');
                                           ?></td>
                     <td class="px-6 py-4">
-                      <a href="update.php?licencia=<?php
-                                                    echo $piloto['licencia'];
-                                                    ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">
+                      <a href="update.php?id=<?php
+                                              echo htmlspecialchars($inscripcion['id'] ?? 'N/A');
+                                              ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">
                         <i class="fas fa-edit"></i> Editar
                       </a>
-                      <form action="../../../models/piloto.php" method="POST" class="inline">
+                      <form action="../../models/inscripcion.php" method="POST" class="inline">
                         <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="licencia" value="<?php echo htmlspecialchars($piloto['licencia']); ?>">
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($inscripcion['id'] ?? 'N/A'); ?>">
 
                         <button
-                          onclick="return confirm('¿Estás seguro de eliminar el piloto <?php echo htmlspecialchars($piloto['nombre']); ?>?')"
+                          onclick="return confirm('¿Estás seguro de eliminar el ficha <?php echo htmlspecialchars($inscripcion['id'] ?? 'N/A'); ?>?')"
                           class="font-medium text-red-600 dark:text-red-500 hover:underline">
                           <i class="fas fa-trash"></i> Eliminar
                         </button>
