@@ -11,7 +11,13 @@ if (isset($_POST['action']) && $_POST['action'] === 'create') {
   $pilotoObj->update();
   header("Location: ../views/personal/piloto/index.php");
   exit();
+}elseif (isset($_POST['action']) && $_POST['action'] === 'delete') {
+  $pilotoObj = new Piloto($conexion);
+  $pilotoObj->delete();
+  header("Location: ../views/personal/piloto/index.php");
+  exit();
 } else {
+
   var_dump($_POST);
   exit;
 }

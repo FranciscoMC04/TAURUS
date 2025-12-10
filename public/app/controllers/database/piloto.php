@@ -78,10 +78,12 @@ class Piloto
     return false;
   }
 
-  public function delete($licencia)
+  public function delete()
   {
+    $licencia = $_POST['licencia'];
+
     $stmt = $this->conn->prepare("DELETE FROM piloto WHERE licencia = ?");
-    $stmt->bind_param("i", $licencia);
+    $stmt->bind_param("s", $licencia);
 
     if ($stmt->execute()) {
       $stmt->close();
