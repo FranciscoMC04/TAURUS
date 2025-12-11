@@ -37,7 +37,7 @@ $detalles = $detalleBusObj->index();
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th class="px-6 py-3">ID</th>
-                                <th class="px-6 py-3">Ficha ID</th>
+                                <th class="px-6 py-3">Descripcion</th>
                                 <th class="px-6 py-3">Bus ID</th>
                                 <th class="px-6 py-3">Piloto ID</th>
                                 <th class="px-6 py-3">Fecha asignación</th>
@@ -54,13 +54,13 @@ $detalles = $detalleBusObj->index();
                                             <?= htmlspecialchars($detalle['id']) ?>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <?= htmlspecialchars($detalle['ficha_id']) ?>
+                                            <?= htmlspecialchars($detalle['descripcion']) ?>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <?= htmlspecialchars($detalle['bus_id']) ?>
+                                            <?= htmlspecialchars($detalle['bus']) ?>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <?= htmlspecialchars($detalle['piloto_id']) ?>
+                                            <?= htmlspecialchars($detalle['piloto']) ?>
                                         </td>
                                         <td class="px-6 py-4">
                                             <?= htmlspecialchars($detalle['fecha_asignacion']) ?>
@@ -69,7 +69,7 @@ $detalles = $detalleBusObj->index();
                                             <?= htmlspecialchars($detalle['rol_onboard'] ?? 'N/A') ?>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <?= htmlspecialchars($detalle['observacion'] ?? 'N/A') ?>
+                                            <?= htmlspecialchars($detalle['observacion'] ?? 'Sin Observaciones') ?>
                                         </td>
                                         <td class="px-6 py-4">
                                            

@@ -14,7 +14,11 @@ class DetalleBus
     
     public function index()
     {
-        $sql = "SELECT * FROM detalle_bus ORDER BY fecha_asignacion DESC";
+        $sql = "SELECT f.descripcion as descripcion, b.placa as bus, p.nombre as piloto, db.fecha_asignacion, db.rol_onboard, db.id, db.observacion FROM detalle_bus as db
+        inner join ficha as f on db.ficha_id=f.id 
+        inner join bus as b on db.bus_id=b.id
+        inner join piloto as p on db.piloto_id=p.id
+        ORDER BY fecha_asignacion DESC";
         $result = $this->conn->query($sql);
 
         $detalles = [];
