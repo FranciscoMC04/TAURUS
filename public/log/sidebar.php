@@ -23,7 +23,7 @@ $base_url = '/TAURUS/public';
         </a>
       </li>
       <li>
-        <a href="" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/restaurante/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <!-- <i class="fa-solid fa-book"></i> -->
            <i class="fa-solid fa-utensils"></i>
@@ -32,7 +32,7 @@ $base_url = '/TAURUS/public';
         </a>
       </li>
       <li>
-        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/guia/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <!-- <i class="fa-solid fa-book"></i> -->
            <i class="fa-solid fa-person-hiking"></i>
@@ -42,7 +42,7 @@ $base_url = '/TAURUS/public';
       </li>
 
       <li>
-        <a href="listarLibro.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a href="/TAURUS/public/app/views/terramoza/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
           <!-- <i class="fa-solid fa-book"></i> -->
            <i class="fa-solid fa-user-nurse"></i>
@@ -78,13 +78,13 @@ $base_url = '/TAURUS/public';
         </a>
       </li>
       <li>
-        <a href="/TAURUS/public/app/views/consolidado/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-
+        <!-- <a href="/TAURUS/public/app/views/consolidado/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+</a> -->
           <!-- <i class="fa-solid fa-book"></i> -->
-           <i class="fa-solid fa-file-lines"></i>
+           <!-- <i class="fa-solid fa-file-lines"></i>
 
-          <span class="ms-3">Consolidado de Viaje</span>
-        </a>
+          <span class="ms-3">Consolidado de Viaje</span> -->
+        
       </li>
       <li>
         <a href="/TAURUS/public/app/views/bus/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
