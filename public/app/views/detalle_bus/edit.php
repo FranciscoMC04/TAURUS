@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 require '../../controllers/conexion.php';
 
 $id = intval($_GET['id'] ?? 0);
@@ -7,7 +10,10 @@ if ($id <= 0) {
     exit();
 }
 
-$stmt = $conexion->prepare("SELECT * FROM detalle_bus WHERE id = ?");
+$stmt = $conexion->prepare("SELECT f.descripcion as descripcion, b.placa as bus, p.nombre as piloto, db.fecha_asignacion, db.rol_onboard, db.id, db.observacion FROM detalle_bus as db
+        inner join ficha as f on db.ficha_id=f.id 
+        inner join bus as b on db.bus_id=b.id
+        inner join piloto as p on db.piloto_id=p.id WHERE db.id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -59,25 +65,25 @@ if (!$detalle) {
           </h2>
 
           <div class="mb-4">
-            <label for="ficha_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ficha ID</label>
-            <input type="number" id="ficha_id" name="ficha_id"
-                   value="<?= htmlspecialchars($detalle['ficha_id']) ?>"
+            <label for="ficha_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
+            <input type="text" id="ficha_id" name="ficha_id"
+                   value="<?= htmlspecialchars($detalle['descripcion']) ?>"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                           focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" required />
           </div>
 
           <div class="mb-4">
-            <label for="bus_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus ID</label>
-            <input type="number" id="bus_id" name="bus_id"
-                   value="<?= htmlspecialchars($detalle['bus_id']) ?>"
+            <label for="bus_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus</label>
+            <input type="text" id="bus_id" name="bus_id"
+                   value="<?= htmlspecialchars($detalle['bus']) ?>"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                           focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" required />
           </div>
 
           <div class="mb-4">
-            <label for="piloto_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Piloto ID</label>
-            <input type="number" id="piloto_id" name="piloto_id"
-                   value="<?= htmlspecialchars($detalle['piloto_id']) ?>"
+            <label for="piloto_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Piloto</label>
+            <input type="text" id="piloto_id" name="piloto_id"
+                   value="<?= htmlspecialchars($detalle['piloto']) ?>"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                           focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" required />
           </div>
@@ -87,7 +93,7 @@ if (!$detalle) {
               Fecha de asignación
             </label>
             <input type="date" id="fecha_asignacion" name="fecha_asignacion"
-                   value="<?= htmlspecialchars($detalle['fecha_asignacion']) ?>"
+                  value="<?php echo date('Y-m-d', strtotime($detalle['fecha_asignacion'])); ?>"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                           focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" required />
           </div>
