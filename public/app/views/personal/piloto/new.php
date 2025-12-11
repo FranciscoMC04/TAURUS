@@ -23,7 +23,7 @@
       <?php
       include "../../../../log/sidebar.php";
       ?>
-    </aside>
+    </aside> 
 
     <div class="ml-64 w-full pt-16 p-6 min-h-[calc(100vh-4rem)] flex flex-col">
 
