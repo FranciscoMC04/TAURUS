@@ -1,7 +1,15 @@
 <?php
-require '../../controllers/conexion.php';
+$archivoActual = basename($_SERVER['SCRIPT_FILENAME']);
 
-class Hotel
+if ($archivoActual == 'index.php')
+    require '../../controllers/conexion.php';
+elseif ($archivoActual == 'update.php')
+    require '../../controllers/conexion.php';
+elseif ($archivoActual == 'hotel.php')
+    require '../controllers/conexion.php';
+
+
+class hotel
 {
     private $conn;
 
@@ -10,24 +18,22 @@ class Hotel
         $this->conn = $conexion;
     }
 
-
-    public function create($nombre, $direccion, $telefono, $categoria)
+    public function create()
     {
-        $stmt = $this->conn->prepare("INSERT INTO hotel (nombre, direccion, telefono, categoria) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $nombre, $direccion, $telefono, $categoria);
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $telefono = $_POST['telefono'];
+        $categoria = $_POST['categoria'];
 
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        }
+        $stmt = $this->conn->prepare("INSERT INTO hotel (nombre, direccion, telefono, categoria) VALUES (?,?,?,?)");
+        $stmt->bind_param("ssii", $nombre, $direccion, $telefono, $categoria);
+        $stmt->execute();
         $stmt->close();
-        return false;
     }
-
 
     public function index()
     {
-        $sql = "SELECT * FROM hotel ORDER BY id DESC";
+        $sql = "SELECT id, nombre, direccion, telefono, categoria FROM hotel";
         $result = $this->conn->query($sql);
 
         $hoteles = [];
@@ -39,35 +45,38 @@ class Hotel
         return $hoteles;
     }
 
-
     public function show($id)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM hotel WHERE id = ?");
+        $stmt = $this->conn->prepare("SELECT id, nombre, direccion, telefono, categoria FROM hotel WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $hotel = $result->fetch_assoc();
         $stmt->close();
+
         return $hotel;
     }
 
-
-    public function update($id, $nombre, $direccion, $telefono, $categoria)
+    public function update()
     {
-        $stmt = $this->conn->prepare("UPDATE hotel SET nombre = ?, direccion = ?, telefono = ?, categoria = ? WHERE id = ?");
-        $stmt->bind_param("sssii", $nombre, $direccion, $telefono, $categoria, $id);
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $telefono = $_POST['telefono'];
+        $categoria = $_POST['categoria'];
 
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        }
+        $stmt = $this->conn->prepare("UPDATE hotel 
+            SET nombre = ?, direccion = ?, telefono = ?, categoria = ? 
+            WHERE id = ?");
+        $stmt->bind_param("ssiii", $nombre, $direccion, $telefono, $categoria, $id);
+        $stmt->execute();
         $stmt->close();
-        return false;
     }
 
-
-    public function delete($id)
+    public function delete()
     {
+        $id = $_POST['id'];
+
         $stmt = $this->conn->prepare("DELETE FROM hotel WHERE id = ?");
         $stmt->bind_param("i", $id);
 
@@ -79,10 +88,10 @@ class Hotel
         return false;
     }
 
-
     public function search($termino)
     {
         $termino = "%" . $termino . "%";
+
         $stmt = $this->conn->prepare("SELECT * FROM hotel WHERE nombre LIKE ? OR direccion LIKE ?");
         $stmt->bind_param("ss", $termino, $termino);
         $stmt->execute();
