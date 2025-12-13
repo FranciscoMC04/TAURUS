@@ -11,7 +11,7 @@ class Ficha
         $this->conn = $conexion;
     }
 
-   
+
     public function index()
     {
         $sql = "SELECT * FROM ficha ORDER BY fecha_inicio DESC";
@@ -28,5 +28,19 @@ class Ficha
         return $fichas;
     }
 
+    public function index2($orderBy = 'fecha_inicio DESC')
+    {
+        $sql = "SELECT titulo, descripcion, imagen FROM ficha ORDER BY $orderBy";
+        $result = $this->conn->query($sql);
 
+        $fichas = [];
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $fichas[] = $row;
+            }
+        }
+
+        return $fichas;
+    }
 }

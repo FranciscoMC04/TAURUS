@@ -20,19 +20,19 @@ $base_url = '/TAURUS/public';
       </li>
       <li>
         <a href="#" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-utensils"></i>
           <span class="ms-3">Restaurante</span>
         </a>
       </li>
       <li>
         <a href="<?php echo $base_url; ?>/app/views/guias/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-user-gear"></i>
           <span class="ms-3">Guias Turisticos</span>
         </a>
       </li>
       <li>
         <a href="<?php echo $base_url; ?>/app/views/terramozas/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-children"></i>
           <span class="ms-3">Terramozas</span>
         </a>
       </li>
@@ -44,43 +44,37 @@ $base_url = '/TAURUS/public';
       </li>
       <li>
         <a href="<?php echo $base_url; ?>/app/views/inscripcion/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-regular fa-address-card"></i>
           <span class="ms-3">Inscripción</span>
         </a>
       </li>
       <li>
         <a href="<?php echo $base_url; ?>/app/views/itinerario/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-clipboard-list"></i>
           <span class="ms-3">Itinerario</span>
         </a>
       </li>
       <li>
-        <a href="<?php echo $base_url; ?>/app/views/consolidado/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
-          <span class="ms-3">Consolidado de Viaje</span>
-        </a>
-      </li>
-      <li>
         <a href="<?php echo $base_url; ?>/app/views/bus/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-bus"></i>
           <span class="ms-3">Bus</span>
         </a>
       </li>
       <li>
-        <a href="<?php echo $base_url; ?>/app/views/detalles_bus/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+        <a href="<?php echo $base_url; ?>/app/views/detalle_bus/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <i class="fa-solid fa-bus"></i>
           <span class="ms-3">Detalles bus</span>
         </a>
       </li>
       <li>
         <a href="<?php echo $base_url; ?>/app/views/ficha/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-file-signature"></i>
           <span class="ms-3">Ficha</span>
         </a>
       </li>
       <li>
         <a href="<?php echo $base_url; ?>/app/views/usuarios/index.php" class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-users"></i>
           <span class="ms-3">Usuario</span>
         </a>
       </li>
