@@ -386,6 +386,372 @@
             font-weight: bold;
             font-size: 14px;
         }
+        .promo-form {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.promo-form input,
+.promo-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.promo-form input:focus,
+.promo-form select:focus {
+    border-color: var(--primary-color);
+}
+
+.promo-form button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.promo-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.promo-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.payment-section {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.boleta-header {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: white;
+    padding: 12px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    margin: -16px -16px 16px -16px;
+}
+
+.boleta-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.boleta-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13px;
+}
+
+.boleta-item:last-child {
+    border-bottom: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary-color);
+    padding-top: 12px;
+    margin-top: 8px;
+    border-top: 2px solid var(--primary-color);
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.payment-option {
+    background: #f8fafc;
+    border: 2px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: var(--primary-color);
+    background: #eff6ff;
+    transform: translateY(-2px);
+}
+
+.payment-option.selected {
+    border-color: var(--primary-color);
+    background: #eff6ff;
+}
+
+.payment-option .icon {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.payment-option .name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.payment-details {
+    background: #f0f9ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    display: none;
+}
+
+.payment-details.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.payment-details h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+.payment-details p {
+    margin: 6px 0;
+    font-size: 13px;
+}
+
+.payment-details .account-number {
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--primary-color);
+}
+
+.payment-details button {
+    width: 100%;
+    padding: 10px;
+    background: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.payment-details button:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    background: white;
+    margin: 12px auto;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    border: 2px solid var(--border-color);
+}
+
+.file-upload-section {
+    background: #f0f9ff;
+    border: 2px dashed #3b82f6;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    text-align: center;
+}
+
+.file-upload-section input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.file-preview {
+    margin-top: 12px;
+    display: none;
+}
+
+.file-preview.active {
+    display: block;
+}
+
+.file-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    margin: 8px 0;
+}
+
+.file-info {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 8px;
+}
+
+.reservation-form {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.reservation-form textarea {
+    resize: vertical;
+    min-height: 60px;
+    font-family: inherit;
+}
+
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.reservation-summary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+}
+
+.reservation-summary h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 8px;
+}
+
+.reservation-summary p {
+    margin: 6px 0;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservation-summary .total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px solid rgba(255,255,255,0.3);
+}
+
+.auth-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.auth-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--primary-color);
+    background: white;
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.auth-btn.guest {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.auth-btn.guest:hover {
+    background: var(--success-color);
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -433,36 +799,48 @@
     <script>
         const BASE_URL = 'http://localhost/TAURUS/public';
         
-        const responses = {
-            'viajes': {
-                text: 'Tenemos destinos increíbles: Tour Lima y Cusco, Factor Sorpresa, Playas del Norte y más.',
-                quickReplies: ['Fechas disponibles', 'Quiero reservar', 'Ver precios']
-            },
-            'promociones': {
-                text: 'Promociones activas: Parejas 20% OFF, Familias 25% OFF, Estudiantes 15% OFF.',
-                quickReplies: ['Aplicar promoción', 'Reservar ahora']
-            },
-            'precios': {
-                text: 'Tours desde S/. 500. Todo incluido: transporte, hospedaje, comidas, guía y seguro.',
-                quickReplies: ['Ver medios de pago', 'Hacer reserva']
-            },
-            'reserva': {
-                text: 'Para reservar necesitas iniciar sesión o registrarte.',
-                quickReplies: ['Iniciar sesión', 'Registrarme']
-            },
-            'medios_pago': {
-                text: 'Aceptamos: Tarjetas, Yape, Plin, Transferencias, Efectivo y Cuotas sin intereses.',
-                quickReplies: ['Pagar ahora', 'Consultar cuotas']
-            },
-            'contacto': {
-                text: 'WhatsApp: +51 904 961 962 | Email: ramostorresbrandhon@taurus.com | Teléfono: (044) 123-4567',
-                quickReplies: ['Enviar WhatsApp', 'Ver ubicación']
-            },
-            'default': {
-                text: 'Puedo ayudarte con viajes, promociones, reservas, precios y contacto.',
-                quickReplies: ['Ver viajes', 'Promociones', 'Reservar', 'Contacto']
-            }
-        };
+       const responses = {
+    'viajes': {
+        text: '🗺️ Tenemos destinos increíbles disponibles: Tour Lima y Cusco, Factor Sorpresa, Playas del Norte, Aventura en la Selva y mucho más.',
+        quickReplies: ['Fechas disponibles', 'Ver precios', 'Quiero reservar']
+    },
+    'fechas': {
+        text: '📅 <strong>Fechas disponibles:</strong><br>• Lima y Cusco: 20-25 Enero / 10-15 Febrero<br>• Playas del Norte: 15-18 Febrero / 5-8 Marzo<br>• Factor Sorpresa: 1-3 Marzo / 22-24 Marzo<br>• Selva Peruana: 10-14 Abril',
+        quickReplies: ['Ver precios', 'Quiero reservar']
+    },
+    'promociones': {
+        text: '🎉 <strong>Promociones activas:</strong><br>• Parejas: 20% OFF<br>• Familias (4+): 25% OFF<br>• Estudiantes: 15% OFF<br>• Grupo de amigos (6+): 18% OFF',
+        quickReplies: ['Aplicar promoción', 'Reservar ahora']
+    },
+    'precios': {
+        text: '💰 <strong>Precios por persona:</strong><br>• Lima y Cusco: S/. 1,200<br>• Playas del Norte: S/. 650<br>• Factor Sorpresa: S/. 800<br>• Selva Peruana: S/. 950<br><br>✅ Todo incluido: transporte, hospedaje, comidas, guía turístico y seguro de viaje.',
+        quickReplies: ['Ver medios de pago', 'Hacer reserva', 'Aplicar promoción']
+    },
+   'reserva': {
+    text: '📝 ¡Genial! Vamos a hacer tu reserva. Puedes continuar como invitado o iniciar sesión para guardar tu historial.',
+    quickReplies: ['Reservar como invitado', 'Iniciar sesión', 'Registrarme']
+},
+   'pagar_ahora': {
+    text: '💳 Vamos a procesar tu pago. Primero necesito algunos datos:',
+    quickReplies: []
+},
+    'cuotas': {
+        text: '💳 <strong>Planes de cuotas sin intereses:</strong><br>• 3 cuotas: Desde S/. 400 mensuales<br>• 6 cuotas: Desde S/. 200 mensuales<br>• 9 cuotas: Desde S/. 140 mensuales<br><br>✅ Aplica para compras desde S/. 600. Tarjetas participantes: Visa, Mastercard, Diners.',
+        quickReplies: ['Reservar ahora', 'Ver viajes']
+    },
+    'contacto': {
+        text: '📞 <strong>Contáctanos:</strong><br>• WhatsApp: +51 904 761 962<br>• Email: ramostorresbrandhon@taurus.com<br>• Teléfono: (044) 123-4567<br>• Horario: Lun-Sáb 9am-8pm',
+        quickReplies: ['Enviar WhatsApp', 'Ver ubicación']
+    },
+    'aplicar_promocion': {
+        text: '🎁 Para aplicar una promoción, primero debes iniciar sesión. Durante el proceso de reserva podrás ingresar tu código promocional o seleccionar el descuento que te corresponda.',
+        quickReplies: ['Iniciar sesión', 'Ver promociones']
+    },
+    'default': {
+        text: '👋 Puedo ayudarte con información sobre viajes, promociones, reservas, precios y contacto. ¿Qué te gustaría saber?',
+        quickReplies: ['Ver viajes', 'Promociones', 'Reservar', 'Contacto']
+    }
+};
 
         const chatMessages = document.getElementById('chatMessages');
         const userInput = document.getElementById('userInput');
@@ -523,55 +901,92 @@
             if (indicator) indicator.remove();
         }
 
-        function getResponse(message) {
-            const lowerMessage = message.toLowerCase();
-            
-            if (lowerMessage.includes('viaje') || lowerMessage.includes('destino') || lowerMessage.includes('tour')) {
-                return responses.viajes;
-            } else if (lowerMessage.includes('promoci') || lowerMessage.includes('descuento') || lowerMessage.includes('oferta')) {
-                return responses.promociones;
-            } else if (lowerMessage.includes('precio') || lowerMessage.includes('costo') || lowerMessage.includes('cuanto')) {
-                return responses.precios;
-            } else if (lowerMessage.includes('reserv') || lowerMessage.includes('inscri')) {
-                return responses.reserva;
-            } else if (lowerMessage.includes('pag') || lowerMessage.includes('tarjeta') || lowerMessage.includes('yape')) {
-                return responses.medios_pago;
-            } else if (lowerMessage.includes('contacto') || lowerMessage.includes('whatsapp') || lowerMessage.includes('telefono')) {
-                return responses.contacto;
-            } else {
-                return responses.default;
-            }
+ function getResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Primero verificamos si debe mostrar formularios
+    if (lowerMessage.includes('pagar') || lowerMessage.includes('boleta') || lowerMessage.includes('comprar')) {
+        showPaymentForm();
+        return null;
+    }
+    
+    if (lowerMessage.includes('fecha') || lowerMessage.includes('cuando') || lowerMessage.includes('disponible')) {
+        return responses.fechas;
+    } else if (lowerMessage.includes('viaje') || lowerMessage.includes('destino') || lowerMessage.includes('tour')) {
+        return responses.viajes;
+    } else if (lowerMessage.includes('promoci') || lowerMessage.includes('descuento') || lowerMessage.includes('oferta')) {
+        return responses.promociones;
+    } else if (lowerMessage.includes('precio') || lowerMessage.includes('costo') || lowerMessage.includes('cuanto')) {
+        return responses.precios;
+    } else if (lowerMessage.includes('reserv') || lowerMessage.includes('inscri')) {
+        return responses.reserva;
+    } else if (lowerMessage.includes('cuota') || lowerMessage.includes('financiamiento') || lowerMessage.includes('mensual')) {
+        return responses.cuotas;
+    } else if (lowerMessage.includes('pag') || lowerMessage.includes('tarjeta') || lowerMessage.includes('yape')) {
+        return responses.medios_pago;
+    } else if (lowerMessage.includes('contacto') || lowerMessage.includes('whatsapp') || lowerMessage.includes('telefono')) {
+        return responses.contacto;
+    } else if (lowerMessage.includes('aplicar') && lowerMessage.includes('promoci')) {
+        return responses.aplicar_promocion;
+    } else {
+        return responses.default;
+    }
+}
+      function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message) return;
+    
+    addMessage(message, true);
+    userInput.value = '';
+    
+    showTypingIndicator();
+    
+    setTimeout(() => {
+        removeTypingIndicator();
+        const response = getResponse(message);
+        
+        // Si getResponse retorna null, significa que ya se mostró un formulario
+        if (response === null) {
+            return;
         }
-
-        function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message) return;
-            
-            addMessage(message, true);
-            userInput.value = '';
-            
-            showTypingIndicator();
-            
-            setTimeout(() => {
-                removeTypingIndicator();
-                const response = getResponse(message);
-                addMessage(response.text);
-                if (response.quickReplies) {
-                    addQuickReplies(response.quickReplies);
-                }
-            }, 1500);
+        
+        addMessage(response.text);
+        if (response.quickReplies) {
+            addQuickReplies(response.quickReplies);
         }
+    }, 1500);
+}
 
         function sendQuickReply(text) {
+
+            if (text === 'Reservar como invitado' || text === 'Hacer reserva' || text === 'Quiero reservar' || text === 'Reservar ahora') {
+            showReservationForm();
+             return;
+             }
+
+         if (text === 'Reservar') {
+            userInput.value = text;
+            sendMessage();
+            return;
+             }
             if (text === 'Iniciar sesión') {
                 window.parent.location.href = `${BASE_URL}/log/login.php`;
                 return;
             }
             
             if (text === 'Registrarme') {
-                window.parent.location.href = `${BASE_URL}/log/registar.php`;
+                window.parent.location.href = `${BASE_URL}/log/registrar.php`;
                 return;
             }
+             if (text === 'Aplicar promoción') {
+        showPromoForm();
+        return;
+           }
+
+             if (text === 'Generar boleta de pago' || text === 'Pagar ahora') {
+        showPaymentForm();
+        return;
+          }
             
             if (text === 'Enviar WhatsApp') {
                 window.open('https://wa.me/904761962', '_blank');
@@ -587,12 +1002,729 @@
             sendMessage();
         }
 
+
+
+
+function showReservationForm() {
+    const formHTML = `
+        <div class="reservation-form">
+            <h4 style="margin: 0 0 16px 0; color: var(--primary-color); font-size: 16px;">📋 Formulario de Reserva</h4>
+            
+            <label>👤 Nombre completo:</label>
+            <input type="text" id="resNombre" placeholder="Ej: Brandhon Ramos Torres" required>
+            
+            <label>📧 Email:</label>
+            <input type="email" id="resEmail" placeholder="ejemplo@gmail.com" required>
+            
+            <label>📞 Teléfono/Celular:</label>
+            <input type="tel" id="resTelefono" placeholder="987654321" required>
+            
+            <label>🆔 DNI/Documento:</label>
+            <input type="text" id="resDni" placeholder="12345678" required maxlength="8">
+            
+            <label>✈️ Destino:</label>
+            <select id="resDestino" required onchange="updateReservationDates()">
+                <option value="">Selecciona tu destino</option>
+                <option value="Lima y Cusco|1200|20-25 Enero, 10-15 Febrero">Lima y Cusco - S/. 1,200</option>
+                <option value="Playas del Norte|650|15-18 Febrero, 5-8 Marzo">Playas del Norte - S/. 650</option>
+                <option value="Factor Sorpresa|800|1-3 Marzo, 22-24 Marzo">Factor Sorpresa - S/. 800</option>
+                <option value="Selva Peruana|950|10-14 Abril">Selva Peruana - S/. 950</option>
+            </select>
+            
+            <label>📅 Fecha del viaje:</label>
+            <select id="resFecha" required disabled>
+                <option value="">Primero selecciona un destino</option>
+            </select>
+            
+            <label>👥 Número de personas:</label>
+            <input type="number" id="resPersonas" min="1" max="20" value="1" required onchange="calculateReservationTotal()">
+            
+            <label>🎁 Promoción (Opcional):</label>
+            <select id="resPromo" onchange="calculateReservationTotal()">
+                <option value="0">Sin promoción</option>
+                <option value="20">Parejas - 20% OFF</option>
+                <option value="25">Familias (4+) - 25% OFF</option>
+                <option value="15">Estudiantes - 15% OFF</option>
+                <option value="18">Grupo de amigos (6+) - 18% OFF</option>
+            </select>
+            
+            <label>📝 Comentarios adicionales (Opcional):</label>
+            <textarea id="resComentarios" placeholder="Ej: Alérgias alimentarias, necesidades especiales, etc."></textarea>
+            
+            <div id="reservationSummary"></div>
+            
+            <button onclick="submitReservation()" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 16px;">
+                ✅ Confirmar Reserva
+            </button>
+        </div>
+    `;
+    
+    addMessage('📝 Completa el formulario de reserva con tus datos:', false);
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div style="max-width: 90%;">
+            ${formHTML}
+        </div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+
+function updateReservationDates() {
+    const destinoSelect = document.getElementById('resDestino');
+    const fechaSelect = document.getElementById('resFecha');
+    
+    if (!destinoSelect.value) {
+        fechaSelect.disabled = true;
+        fechaSelect.innerHTML = '<option value="">Primero selecciona un destino</option>';
+        return;
+    }
+    
+    const [destino, precio, fechas] = destinoSelect.value.split('|');
+    const fechasArray = fechas.split(',').map(f => f.trim());
+    
+    fechaSelect.disabled = false;
+    fechaSelect.innerHTML = '<option value="">Selecciona una fecha</option>';
+    
+    fechasArray.forEach(fecha => {
+        const option = document.createElement('option');
+        option.value = fecha;
+        option.textContent = fecha + ' 2025';
+        fechaSelect.appendChild(option);
+    });
+    
+    calculateReservationTotal();
+}
+
+
+
+function calculateReservationTotal() {
+    const destinoSelect = document.getElementById('resDestino');
+    const personas = parseInt(document.getElementById('resPersonas').value) || 1;
+    const promoDescuento = parseInt(document.getElementById('resPromo').value) || 0;
+    const summaryDiv = document.getElementById('reservationSummary');
+    
+    if (!destinoSelect.value) {
+        summaryDiv.innerHTML = '';
+        return;
+    }
+    
+    const [destino, precioBase] = destinoSelect.value.split('|');
+    const subtotal = parseFloat(precioBase) * personas;
+    const descuento = (subtotal * promoDescuento) / 100;
+    const total = subtotal - descuento;
+    
+    summaryDiv.innerHTML = `
+        <div class="reservation-summary">
+            <h4>📊 Resumen de Reserva</h4>
+            <p><span>Destino:</span> <span>${destino}</span></p>
+            <p><span>Personas:</span> <span>${personas}</span></p>
+            <p><span>Precio por persona:</span> <span>S/. ${precioBase}</span></p>
+            <p><span>Subtotal:</span> <span>S/. ${subtotal.toFixed(2)}</span></p>
+            ${descuento > 0 ? `<p style="color: #10b981;"><span>Descuento (${promoDescuento}%):</span> <span>- S/. ${descuento.toFixed(2)}</span></p>` : ''}
+            <p class="total"><span>TOTAL:</span> <span>S/. ${total.toFixed(2)}</span></p>
+        </div>
+    `;
+}
+
+
+
+
+function submitReservation() {
+    const nombre = document.getElementById('resNombre').value.trim();
+    const email = document.getElementById('resEmail').value.trim();
+    const telefono = document.getElementById('resTelefono').value.trim();
+    const dni = document.getElementById('resDni').value.trim();
+    const destinoSelect = document.getElementById('resDestino').value;
+    const fecha = document.getElementById('resFecha').value;
+    const personas = document.getElementById('resPersonas').value;
+    const promoDescuento = parseInt(document.getElementById('resPromo').value);
+    const comentarios = document.getElementById('resComentarios').value.trim();
+    
+    // Validaciones
+    if (!nombre || !email || !telefono || !dni || !destinoSelect || !fecha || !personas) {
+        addMessage('❌ Por favor completa todos los campos obligatorios', false);
+        return;
+    }
+    
+    // Validar DNI (8 dígitos)
+    if (dni.length !== 8 || !/^\d+$/.test(dni)) {
+        addMessage('❌ El DNI debe tener 8 dígitos', false);
+        return;
+    }
+    
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        addMessage('❌ Por favor ingresa un email válido', false);
+        return;
+    }
+    
+    const [destino, precioBase] = destinoSelect.split('|');
+    const subtotal = parseFloat(precioBase) * parseInt(personas);
+    const descuento = (subtotal * promoDescuento) / 100;
+    const total = subtotal - descuento;
+    
+    const numeroReserva = 'RES-' + Date.now().toString().slice(-8);
+    const fechaActual = new Date().toLocaleDateString('es-PE');
+    
+    const promoTexto = promoDescuento > 0 ? document.getElementById('resPromo').options[document.getElementById('resPromo').selectedIndex].text : 'Sin promoción';
+    
+    const mensaje = `🎉 *NUEVA RESERVA - TAURUS* 🚌
+
+📋 *Número de Reserva:* ${numeroReserva}
+📅 *Fecha de solicitud:* ${fechaActual}
+
+👤 *DATOS DEL CLIENTE:*
+Nombre: ${nombre}
+DNI: ${dni}
+Email: ${email}
+Teléfono: ${telefono}
+
+✈️ *DETALLES DEL VIAJE:*
+Destino: ${destino}
+Fecha: ${fecha} 2025
+Personas: ${personas}
+${comentarios ? `Comentarios: ${comentarios}` : ''}
+
+💰 *RESUMEN DE PAGO:*
+Subtotal: S/. ${subtotal.toFixed(2)}
+${descuento > 0 ? `Promoción: ${promoTexto} (-S/. ${descuento.toFixed(2)})` : 'Sin promoción'}
+*TOTAL: S/. ${total.toFixed(2)}*
+
+Estado: ⏳ Pendiente de confirmación`;
+    
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const urlWhatsApp = `https://wa.me/51904761962?text=${mensajeCodificado}`;
+    
+    addMessage('✅ ¡Reserva procesada exitosamente!', false);
+    addMessage(`📋 Tu número de reserva es: <strong>${numeroReserva}</strong>`, false);
+    addMessage('📱 Te redirigiremos a WhatsApp para confirmar tu reserva con nuestro equipo...', false);
+    
+    setTimeout(() => {
+        window.open(urlWhatsApp, '_blank');
+        
+        setTimeout(() => {
+            addMessage('💡 Recuerda: Tu reserva quedará confirmada una vez que realices el pago. Nuestro equipo te contactará por WhatsApp.', false);
+            
+            const quickRepliesDiv = document.createElement('div');
+            quickRepliesDiv.className = 'quick-replies';
+            quickRepliesDiv.innerHTML = `
+                <button class="quick-reply" onclick="sendQuickReply('Pagar ahora')">💳 Proceder al pago</button>
+                <button class="quick-reply" onclick="sendQuickReply('Ver viajes')">🗺️ Ver más viajes</button>
+            `;
+            
+            const lastMessage = chatMessages.lastElementChild;
+            lastMessage.querySelector('div:last-child').appendChild(quickRepliesDiv);
+        }, 2000);
+    }, 1500);
+}
+
+
+        function showPromoForm() {
+    const formHTML = `
+        <div class="promo-form">
+            <label>📝 Nombre completo:</label>
+            <input type="text" id="promoNombre" placeholder="Ej: Brandhon Ramos" required>
+            
+            <label>📞 Teléfono:</label>
+            <input type="tel" id="promoTelefono" placeholder="Ej: 987654321" required>
+            
+            <label>✈️ Destino de interés:</label>
+            <select id="promoDestino" required>
+                <option value="">Selecciona un destino</option>
+                <option value="Lima y Cusco">Lima y Cusco - S/. 1,200</option>
+                <option value="Playas del Norte">Playas del Norte - S/. 650</option>
+                <option value="Factor Sorpresa">Factor Sorpresa - S/. 800</option>
+                <option value="Selva Peruana">Selva Peruana - S/. 950</option>
+            </select>
+            
+            <label>🎁 Tipo de promoción:</label>
+            <select id="promoTipo" required>
+                <option value="">Selecciona promoción</option>
+                <option value="Parejas (20% OFF)">Parejas - 20% OFF</option>
+                <option value="Familias (25% OFF)">Familias (4+) - 25% OFF</option>
+                <option value="Estudiantes (15% OFF)">Estudiantes - 15% OFF</option>
+                <option value="Grupo de amigos (18% OFF)">Grupo de amigos (6+) - 18% OFF</option>
+            </select>
+            
+            <button onclick="sendPromoToWhatsApp()">
+                <span>💬</span> Enviar solicitud por WhatsApp
+            </button>
+        </div>
+    `;
+    
+    addMessage('¡Perfecto! Por favor completa tus datos para aplicar la promoción:', false);
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div style="max-width: 75%;">
+            ${formHTML}
+        </div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function sendPromoToWhatsApp() {
+    const nombre = document.getElementById('promoNombre').value.trim();
+    const telefono = document.getElementById('promoTelefono').value.trim();
+    const destino = document.getElementById('promoDestino').value;
+    const tipoPromo = document.getElementById('promoTipo').value;
+    
+    if (!nombre || !telefono || !destino || !tipoPromo) {
+        addMessage('❌ Por favor completa todos los campos', false);
+        return;
+    }
+    
+    const mensaje = `¡Hola! Quiero aplicar una promoción de TAURUS 🚌
+
+👤 *Nombre:* ${nombre}
+📞 *Teléfono:* ${telefono}
+✈️ *Destino:* ${destino}
+🎁 *Promoción:* ${tipoPromo}
+
+¿Pueden ayudarme con la reserva?`;
+    
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const urlWhatsApp = `https://wa.me/51904761962?text=${mensajeCodificado}`;
+    
+    addMessage('✅ Perfecto! Te redirigimos a WhatsApp para finalizar tu solicitud...', false);
+    
+    setTimeout(() => {
+        window.open(urlWhatsApp, '_blank');
+    }, 1000);
+}
+
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
         }
+function showPaymentForm() {
+    const formHTML = `
+        <div class="payment-section" style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 10px;">
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;">📝 Nombre completo:</label>
+            <input type="text" id="payNombre" placeholder="Ej: Brandhon Ramos" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+            
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;">📧 Email:</label>
+            <input type="email" id="payEmail" placeholder="ejemplo@gmail.com" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+            
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;">📞 Teléfono/Celular:</label>
+            <input type="tel" id="payTelefono" placeholder="987654321" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+            
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;">✈️ Destino:</label>
+            <select id="payDestino" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+                <option value="">Selecciona tu destino</option>
+                <option value="Lima y Cusco|1200">Lima y Cusco - S/. 1,200</option>
+                <option value="Playas del Norte|650">Playas del Norte - S/. 650</option>
+                <option value="Factor Sorpresa|800">Factor Sorpresa - S/. 800</option>
+                <option value="Selva Peruana|950">Selva Peruana - S/. 950</option>
+            </select>
+            
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;">👥 Número de personas:</label>
+            <input type="number" id="payPersonas" min="1" value="1" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+            
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;">🎁 ¿Tienes promoción? (Opcional):</label>
+            <select id="payPromo" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+                <option value="0">Sin promoción</option>
+                <option value="20">Parejas - 20% OFF</option>
+                <option value="25">Familias (4+) - 25% OFF</option>
+                <option value="15">Estudiantes - 15% OFF</option>
+                <option value="18">Grupo de amigos (6+) - 18% OFF</option>
+            </select>
+            
+            <button onclick="generateBoleta()" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 16px;">
+                📄 Generar Boleta de Pago
+            </button>
+        </div>
+    `;
+    
+    addMessage('💳 Perfecto! Para generar tu boleta de pago, completa los siguientes datos:', false);
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div style="max-width: 85%;">
+            ${formHTML}
+        </div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
+function updatePrice() {
+    // Esta función se llama automáticamente al cambiar destino, personas o promoción
+    // Por ahora solo la dejamos lista para cálculos en tiempo real
+}
+
+function generateBoleta() {
+    const nombre = document.getElementById('payNombre').value.trim();
+    const email = document.getElementById('payEmail').value.trim();
+    const telefono = document.getElementById('payTelefono').value.trim();
+    const destinoSelect = document.getElementById('payDestino').value;
+    const personas = parseInt(document.getElementById('payPersonas').value);
+    const promoDescuento = parseInt(document.getElementById('payPromo').value);
+    
+    if (!nombre || !email || !telefono || !destinoSelect || !personas) {
+        addMessage('❌ Por favor completa todos los campos obligatorios', false);
+        return;
+    }
+    
+    const [destino, precioBase] = destinoSelect.split('|');
+    const subtotal = parseFloat(precioBase) * personas;
+    const descuento = (subtotal * promoDescuento) / 100;
+    const total = subtotal - descuento;
+    
+    const numeroOrden = 'ORD-' + Date.now().toString().slice(-8);
+    const fecha = new Date().toLocaleDateString('es-PE', { 
+        day: '2-digit', 
+        month: '2-digit', 
+        year: 'numeric' 
+    });
+    
+    showBoletaAndPayment(nombre, email, telefono, destino, personas, subtotal, descuento, total, numeroOrden, fecha, promoDescuento);
+}
+
+function showBoletaAndPayment(nombre, email, telefono, destino, personas, subtotal, descuento, total, numeroOrden, fecha, promoDescuento) {
+    const boletaHTML = `
+        <div class="payment-section">
+            <div class="boleta-header">
+                <h3>🧾 BOLETA DE PAGO - TAURUS</h3>
+                <p style="margin: 4px 0 0 0; font-size: 11px; opacity: 0.9;">N° ${numeroOrden}</p>
+            </div>
+            
+            <div style="margin-bottom: 16px;">
+                <p style="margin: 4px 0; font-size: 12px;"><strong>📅 Fecha:</strong> ${fecha}</p>
+                <p style="margin: 4px 0; font-size: 12px;"><strong>👤 Cliente:</strong> ${nombre}</p>
+                <p style="margin: 4px 0; font-size: 12px;"><strong>📧 Email:</strong> ${email}</p>
+                <p style="margin: 4px 0; font-size: 12px;"><strong>📞 Teléfono:</strong> ${telefono}</p>
+            </div>
+            
+            <div style="border-top: 2px dashed var(--border-color); padding-top: 12px;">
+                <div class="boleta-item">
+                    <span>✈️ Destino:</span>
+                    <span>${destino}</span>
+                </div>
+                <div class="boleta-item">
+                    <span>👥 Personas:</span>
+                    <span>${personas}</span>
+                </div>
+                <div class="boleta-item">
+                    <span>💰 Subtotal:</span>
+                    <span>S/. ${subtotal.toFixed(2)}</span>
+                </div>
+                ${descuento > 0 ? `
+                <div class="boleta-item" style="color: var(--success-color);">
+                    <span>🎁 Descuento (${promoDescuento}%):</span>
+                    <span>- S/. ${descuento.toFixed(2)}</span>
+                </div>
+                ` : ''}
+                <div class="boleta-item">
+                    <span>💳 TOTAL A PAGAR:</span>
+                    <span>S/. ${total.toFixed(2)}</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h4 style="margin: 0 0 12px 0; font-size: 14px; color: var(--text-dark);">Selecciona tu método de pago:</h4>
+                <div class="payment-options">
+                    <div class="payment-option" onclick="selectPayment('yape', ${total})">
+                        <div class="icon">📱</div>
+                        <div class="name">Yape</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('plin', ${total})">
+                        <div class="icon">💜</div>
+                        <div class="name">Plin</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('transferencia', ${total})">
+                        <div class="icon">🏦</div>
+                        <div class="name">Transferencia</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('tarjeta', ${total})">
+                        <div class="icon">💳</div>
+                        <div class="name">Tarjeta</div>
+                    </div>
+                </div>
+                
+                <div id="paymentDetails" class="payment-details"></div>
+            </div>
+        </div>
+    `;
+    
+    addMessage('✅ ¡Boleta generada exitosamente!', false);
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div style="max-width: 85%;">
+            ${boletaHTML}
+        </div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function selectPayment(method, total) {
+    // Remover selección previa
+    document.querySelectorAll('.payment-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    
+    // Seleccionar el método actual
+    event.target.closest('.payment-option').classList.add('selected');
+    
+    const detailsDiv = document.getElementById('paymentDetails');
+    let detailsHTML = '';
+    
+    switch(method) {
+        case 'yape':
+            detailsHTML = `
+                <h4>📱 Pago con Yape</h4>
+                <div class="qr-code">📱</div>
+                <p><strong>Número Yape:</strong></p>
+                <div class="account-number">904 761 962</div>
+                <p style="font-size: 12px; color: var(--text-light);">
+                    1. Abre tu app Yape<br>
+                    2. Escanea el código QR o usa el número<br>
+                    3. Ingresa el monto: <strong>S/. ${total.toFixed(2)}</strong><br>
+                    4. Realiza el pago<br>
+                    5. Toma captura del comprobante
+                </p>
+                
+                <div class="file-upload-section">
+                    <p style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">📸 Adjunta tu comprobante de pago:</p>
+                    <input type="file" id="comprobanteYape" accept="image/*" onchange="previewImage(this, 'previewYape')">
+                    <label for="comprobanteYape" class="file-upload-label">
+                        📁 Seleccionar imagen
+                    </label>
+                    <div id="previewYape" class="file-preview"></div>
+                    <p style="font-size: 11px; color: #6b7280; margin-top: 8px;">Formatos: JPG, PNG (máx. 5MB)</p>
+                </div>
+                
+                <button onclick="sendPaymentWithVoucher('Yape', ${total}, 'comprobanteYape')">
+                    ✅ Enviar comprobante por WhatsApp
+                </button>
+            `;
+            break;
+            
+        case 'plin':
+            detailsHTML = `
+                <h4>💜 Pago con Plin</h4>
+                <div class="qr-code">💜</div>
+                <p><strong>Número Plin:</strong></p>
+                <div class="account-number">904 761 962</div>
+                <p style="font-size: 12px; color: var(--text-light);">
+                    1. Abre tu app Plin<br>
+                    2. Selecciona "Enviar dinero"<br>
+                    3. Ingresa el monto: <strong>S/. ${total.toFixed(2)}</strong><br>
+                    4. Realiza el pago<br>
+                    5. Toma captura del comprobante
+                </p>
+                
+                <div class="file-upload-section">
+                    <p style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">📸 Adjunta tu comprobante de pago:</p>
+                    <input type="file" id="comprobantePlin" accept="image/*" onchange="previewImage(this, 'previewPlin')">
+                    <label for="comprobantePlin" class="file-upload-label">
+                        📁 Seleccionar imagen
+                    </label>
+                    <div id="previewPlin" class="file-preview"></div>
+                    <p style="font-size: 11px; color: #6b7280; margin-top: 8px;">Formatos: JPG, PNG (máx. 5MB)</p>
+                </div>
+                
+                <button onclick="sendPaymentWithVoucher('Plin', ${total}, 'comprobantePlin')">
+                    ✅ Enviar comprobante por WhatsApp
+                </button>
+            `;
+            break;
+            
+        case 'transferencia':
+            detailsHTML = `
+                <h4>🏦 Transferencia Bancaria</h4>
+                <p><strong>Banco:</strong> BCP</p>
+                <div class="account-number">191-2345678-0-99</div>
+                <p><strong>CCI:</strong></p>
+                <div class="account-number">00219100234567809912</div>
+                <p><strong>Titular:</strong> TAURUS TOURS S.A.C.</p>
+                <p><strong>Monto:</strong> S/. ${total.toFixed(2)}</p>
+                
+                <div class="file-upload-section" style="margin-top: 12px;">
+                    <p style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">📸 Adjunta tu comprobante de transferencia:</p>
+                    <input type="file" id="comprobanteTransf" accept="image/*" onchange="previewImage(this, 'previewTransf')">
+                    <label for="comprobanteTransf" class="file-upload-label">
+                        📁 Seleccionar imagen
+                    </label>
+                    <div id="previewTransf" class="file-preview"></div>
+                    <p style="font-size: 11px; color: #6b7280; margin-top: 8px;">Formatos: JPG, PNG (máx. 5MB)</p>
+                </div>
+                
+                <button onclick="sendPaymentWithVoucher('Transferencia', ${total}, 'comprobanteTransf')">
+                    ✅ Enviar comprobante por WhatsApp
+                </button>
+            `;
+            break;
+            
+        case 'tarjeta':
+            detailsHTML = `
+                <h4>💳 Pago con Tarjeta</h4>
+                <p style="font-size: 13px;">Aceptamos tarjetas Visa y Mastercard</p>
+                <p style="font-size: 13px;"><strong>Cuotas disponibles:</strong></p>
+                <ul style="font-size: 12px; margin: 8px 0; padding-left: 20px;">
+                    <li>3 cuotas sin intereses</li>
+                    <li>6 cuotas sin intereses</li>
+                    <li>9 cuotas sin intereses</li>
+                </ul>
+                <p style="font-size: 12px; color: var(--text-light);">
+                    Para procesar tu pago con tarjeta, contáctanos por WhatsApp y te enviaremos el link de pago seguro.
+                </p>
+                <button onclick="sendPaymentConfirmation('Tarjeta', ${total})">
+                    💬 Contactar para pagar con tarjeta
+                </button>
+            `;
+            break;
+    }
+    
+    detailsDiv.innerHTML = detailsHTML;
+    detailsDiv.classList.add('active');
+}
+
+
+
+function previewImage(input, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = input.files[0];
+    
+    if (file) {
+        // Validar tamaño (5MB máximo)
+        if (file.size > 5 * 1024 * 1024) {
+            addMessage('❌ La imagen es muy grande. Por favor sube una imagen menor a 5MB', false);
+            input.value = '';
+            return;
+        }
+        
+        // Validar tipo
+        if (!file.type.startsWith('image/')) {
+            addMessage('❌ Por favor selecciona una imagen válida (JPG, PNG)', false);
+            input.value = '';
+            return;
+        }
+        
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.innerHTML = `
+                <p style="font-size: 12px; color: var(--success-color); font-weight: 600; margin-bottom: 8px;">
+                    ✅ Comprobante cargado correctamente
+                </p>
+                <img src="${e.target.result}" alt="Comprobante">
+                <p class="file-info">📄 ${file.name} (${(file.size / 1024).toFixed(2)} KB)</p>
+            `;
+            preview.classList.add('active');
+        };
+        
+        reader.readAsDataURL(file);
+    }
+}
+
+
+
+function sendPaymentWithVoucher(metodo, total, inputId) {
+    const fileInput = document.getElementById(inputId);
+    const file = fileInput ? fileInput.files[0] : null;
+    
+    if (!file) {
+        addMessage('❌ Por favor adjunta primero tu comprobante de pago', false);
+        return;
+    }
+    
+    // Obtener datos de la boleta del DOM
+    const nombre = document.querySelector('.payment-section p:nth-child(2)')?.textContent.replace('👤 Cliente:', '').trim() || 'Cliente';
+    const telefono = document.querySelector('.payment-section p:nth-child(4)')?.textContent.replace('📞 Teléfono:', '').trim() || '';
+    const destino = document.querySelector('.boleta-item:nth-child(1) span:last-child')?.textContent || 'Destino';
+    const personas = document.querySelector('.boleta-item:nth-child(2) span:last-child')?.textContent || '1';
+    const numeroOrden = document.querySelector('.boleta-header p')?.textContent.replace('N°', '').trim() || '';
+    
+    const mensaje = `¡Hola! 👋 He realizado un pago en TAURUS
+
+🧾 *Número de Orden:* ${numeroOrden}
+👤 *Nombre:* ${nombre}
+📞 *Teléfono:* ${telefono}
+✈️ *Destino:* ${destino}
+👥 *Personas:* ${personas}
+
+💳 *Método de pago:* ${metodo}
+💰 *Monto pagado:* S/. ${total.toFixed(2)}
+
+📸 *Adjunto mi comprobante de pago*
+
+Por favor, confirmen la recepción del pago.
+¡Gracias! 😊`;
+    
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const urlWhatsApp = `https://wa.me/51904761962?text=${mensajeCodificado}`;
+    
+    addMessage(`✅ ¡Perfecto! Tu comprobante de ${metodo} ha sido verificado.`, false);
+    addMessage(`📱 Ahora te redirigiremos a WhatsApp. Por favor, adjunta la imagen del comprobante en el chat.`, false);
+    
+    // Guardar la imagen en el portapapeles (si el navegador lo soporta)
+    if (navigator.clipboard && file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Crear una imagen temporal para copiar
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = function() {
+                // Informar al usuario
+                addMessage('💡 Tip: Cuando se abra WhatsApp, pega (Ctrl+V) o adjunta manualmente la imagen del comprobante.', false);
+            };
+        };
+        reader.readAsDataURL(file);
+    }
+    
+    setTimeout(() => {
+        window.open(urlWhatsApp, '_blank');
+        
+        // Mostrar instrucciones adicionales
+        setTimeout(() => {
+            addMessage('📋 Instrucciones: En WhatsApp, haz clic en el ícono 📎 y selecciona la imagen del comprobante que acabas de cargar.', false);
+        }, 2000);
+    }, 1500);
+}
+
+function sendPaymentConfirmation(metodo, total) {
+    const mensaje = `Hola! 👋
+
+He generado mi boleta de pago en TAURUS:
+
+💳 *Método de pago:* ${metodo}
+💰 *Monto:* S/. ${total.toFixed(2)}
+
+${metodo !== 'Tarjeta' ? '📸 Adjunto el comprobante de pago' : '¿Pueden enviarme el link de pago?'}
+
+¡Gracias!`;
+    
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const urlWhatsApp = `https://wa.me/51904761962?text=${mensajeCodificado}`;
+    
+    addMessage(`✅ Perfecto! Redirigiendo a WhatsApp para confirmar tu pago con ${metodo}...`, false);
+    
+    setTimeout(() => {
+        window.open(urlWhatsApp, '_blank');
+        addMessage('📱 Si WhatsApp no se abrió automáticamente, haz clic aquí: https://wa.me/5190761962', false);
+    }, 1000);
+}
         userInput.focus();
     </script>
 </body>

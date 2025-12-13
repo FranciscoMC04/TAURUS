@@ -144,7 +144,7 @@ function toggleChat() {
         Iniciar sesión
       </a>
 
-      <a href="../public/log/registar.php"
+      <a href="../public/log/registrar.php"
         class="text-white bg-green-600 hover:bg-green-700
               px-4 py-2 rounded-lg text-sm font-medium">
         Registrarse
