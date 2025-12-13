@@ -1,3 +1,19 @@
+<?php
+require '../../controllers/conexion.php';
+require '../../controllers/database/hotel.php';
+require '../../controllers/database/restaurante.php';
+require '../../controllers/database/ficha.php';
+
+$fichaObj = new Ficha($conexion);
+$fichas = $fichaObj->index();
+
+$hotelObj = new hotel($conexion);
+$restauranteObj = new Restaurante($conexion);
+
+$hoteles = $hotelObj->index();
+$restaurantes = $restauranteObj->index();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,19 +53,45 @@
       <div class="flex-grow flex items-center justify-center">
         <form method="post" action="../../models/itinerario.php" class="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 w-full max-w-md">
           <input type="hidden" name="action" value="create">
-          <input type="hidden" name="ficha_id" value="1">
 
           <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Registrar nuevo itinerario</h2>
+          <div class="mb-4">
+            <label for="ficha_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Seleccione Ficha
+            </label>
+
+            <select id="ficha_id" name="ficha_id"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                    dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              required>
+
+              <option value="" disabled selected>Seleccione una ficha</option>
+
+              <?php foreach ($fichas as $f): ?>
+                <option 
+                  value="<?= $f['id'] ?>"
+                  data-fecha="<?= $f['fecha_inicio'] ?>"
+                >
+                  <?= $f['codigo'] ?> - <?= $f['titulo'] ?>
+                </option>
+              <?php endforeach; ?>
+
+            </select>
+          </div>
 
           <div class="mb-4">
-            <label for="dia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dia</label>
-            <input type="text" id="dia" name="dia" placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" required />
+            <input type="hidden" id="dia" name="dia">
           </div>
           <div class="mb-4">
-            <label for="fecha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha </label>
-            <input type="date" id="fecha" name="fecha" placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" required />
+            <label for="fecha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Fecha
+            </label>
+            <input type="date" id="fecha" name="fecha"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                    dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              required />
           </div>
 
           <div class="mb-4">
@@ -68,19 +110,42 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" required />
           </div>
           <div class="mb-4">
-            <label for="nombre_hotel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Hotel</label>
-            <input type="text" id="nombre_hotel" name="nombre_hotel" placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" required />
+            <label for="nombre_hotel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Seleccione Hotel
+            </label>
+            <select id="nombre_hotel" name="nombre_hotel"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              required>
+              <option value="" disabled selected>Seleccione un hotel</option>
+
+              <?php foreach ($hoteles as $h): ?>
+                <option value="<?= $h['nombre'] ?>">
+                  <?= $h['nombre'] ?>
+                </option>
+              <?php endforeach; ?>
+
+            </select>
           </div>
           <div class="mb-4">
-            <label for="nombre_restaurante" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Restaurante</label>
-            <input type="text" id="nombre_restaurante" name="nombre_restaurante" placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" required />
+            <label for="nombre_restaurante" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Seleccione Restaurante
+            </label>
+            <select id="nombre_restaurante" name="nombre_restaurante"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              required>
+
+              <option value="" disabled selected>Seleccione un restaurante</option>
+
+              <?php foreach ($restaurantes as $r): ?>
+                  <option value="<?= $r['nombre'] ?>">
+                      <?= $r['nombre'] ?>
+                  </option>
+              <?php endforeach; ?>
+
+            </select>
           </div>
           <div class="mb-4">
-            <label for="orden" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Orden</label>
-            <input type="text" id="orden" name="orden" placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" required />
+            <input type="hidden" id="orden" name="orden">
           </div>
 
           <button type="submit"
@@ -93,6 +158,16 @@
     </div>
   </div>
 
+  <script>
+    document.getElementById('ficha_id').addEventListener('change', function () {
+      const selected = this.options[this.selectedIndex];
+      const fecha = selected.getAttribute('data-fecha');
+
+      if (fecha) {
+        document.getElementById('fecha').value = fecha;
+      }
+    });
+  </script>
 </body>
 
 </html>

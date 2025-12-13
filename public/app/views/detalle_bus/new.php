@@ -1,3 +1,28 @@
+<?php
+require_once '../../controllers/conexion.php';
+
+/* FICHAS */
+$fichas = [];
+$result = $conexion->query("SELECT id, titulo FROM ficha ORDER BY titulo");
+while ($row = $result->fetch_assoc()) {
+    $fichas[] = $row;
+}
+
+/* BUSES */
+$buses = [];
+$result = $conexion->query("SELECT id, placa FROM bus ORDER BY placa");
+while ($row = $result->fetch_assoc()) {
+    $buses[] = $row;
+}
+
+/* PILOTOS */
+$pilotos = [];
+$result = $conexion->query("SELECT id, nombre, licencia FROM piloto ORDER BY nombre");
+while ($row = $result->fetch_assoc()) {
+    $pilotos[] = $row;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,24 +60,51 @@
           </h2>
 
           <div class="mb-4">
-            <label for="ficha_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
-            <input type="number" id="ficha_id" name="ficha_id" required
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" />
+            <label for="ficha_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Viaje asignado
+            </label>
+            <select id="ficha_id" name="ficha_id" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700">
+              <option value="">Seleccione un viaje</option>
+              <?php foreach ($fichas as $f): ?>
+                <option value="<?= $f['id'] ?>">
+                  <?= htmlspecialchars($f['titulo']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
           <div class="mb-4">
-            <label for="bus_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus ID</label>
-            <input type="number" id="bus_id" name="bus_id" required
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" />
+            <label for="bus_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Placa de Bus
+            </label>
+            <select id="bus_id" name="bus_id" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700">
+              <option value="">Seleccione un bus</option>
+              <?php foreach ($buses as $b): ?>
+                <option value="<?= $b['id'] ?>">
+                  <?= htmlspecialchars($b['placa']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
           <div class="mb-4">
-            <label for="piloto_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Piloto ID</label>
-            <input type="number" id="piloto_id" name="piloto_id" required
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" />
+            <label for="piloto_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Piloto
+            </label>
+            <select id="piloto_id" name="piloto_id" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700">
+              <option value="">Seleccione un piloto</option>
+              <?php foreach ($pilotos as $p): ?>
+                <option value="<?= $p['id'] ?>">
+                  <?= htmlspecialchars($p['nombre'] . ' - Lic. ' . $p['licencia']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
           <div class="mb-4">
@@ -68,9 +120,13 @@
             <label for="rol_onboard" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Rol onboard
             </label>
-            <input type="text" id="rol_onboard" name="rol_onboard" required
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" />
+            <select id="rol_onboard" name="rol_onboard" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700">
+              <option value="">Seleccione un rol</option>
+              <option value="Conductor principal">Conductor principal</option>
+              <option value="Conductor secundario">Conductor secundario</option>
+            </select>
           </div>
 
           <div class="mb-4">

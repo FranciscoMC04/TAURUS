@@ -34,7 +34,6 @@ $buses = $busObj->index();
                                 <th scope="col" class="px-6 py-3">Placa</th>
                                 <th scope="col" class="px-6 py-3">Marca</th>
                                 <th scope="col" class="px-6 py-3">Modelo</th>
-                                <th scope="col" class="px-6 py-3">Año</th>
                                 <th scope="col" class="px-6 py-3">Capacidad</th>
                                 <th scope="col" class="px-6 py-3">Estado</th>
                                 <th scope="col" class="px-6 py-3">Acciones</th>

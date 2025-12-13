@@ -30,18 +30,18 @@ $detalles = $detalleBusObj->index();
 
         <div class="ml-64 w-full pt-16 p-6 mt-6">
             <div class="mt-6 text-white">
-                <h1 class="text-2xl font-bold mb-4">Detalle de buses</h1>
+                <h1 class="text-2xl font-bold mb-4">Asignación de buses</h1>
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th class="px-6 py-3">ID</th>
-                                <th class="px-6 py-3">Descripcion</th>
-                                <th class="px-6 py-3">Bus ID</th>
-                                <th class="px-6 py-3">Piloto ID</th>
+                                <th class="px-6 py-3">Viaje asignado</th>
+                                <th class="px-6 py-3">Bus-Placa</th>
+                                <th class="px-6 py-3">Nombre Piloto</th>
                                 <th class="px-6 py-3">Fecha asignación</th>
-                                <th class="px-6 py-3">Rol onboard</th>
+                                <th class="px-6 py-3">Rol</th>
                                 <th class="px-6 py-3">Observación</th>
                                 <th class="px-6 py-3">Acciones</th>
                             </tr>
@@ -54,7 +54,7 @@ $detalles = $detalleBusObj->index();
                                             <?= htmlspecialchars($detalle['id']) ?>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <?= htmlspecialchars($detalle['descripcion']) ?>
+                                            <?= htmlspecialchars($detalle['ficha_titulo']) ?>
                                         </td>
                                         <td class="px-6 py-4">
                                             <?= htmlspecialchars($detalle['bus']) ?>

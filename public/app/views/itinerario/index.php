@@ -36,14 +36,13 @@ $itinerarios = $itinerarioObj->index();
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3">Dia</th>
+                <th scope="col" class="px-6 py-3">Viaje</th>
                 <th scope="col" class="px-6 py-3">Fecha </th>
                 <th scope="col" class="px-6 py-3">Hora inicio</th>
                 <th scope="col" class="px-6 py-3">Hora fin</th>
                 <th scope="col" class="px-6 py-3">Description</th>
                 <th scope="col" class="px-6 py-3">Hotel</th>
                 <th scope="col" class="px-6 py-3">Restaurante</th>
-                <th scope="col" class="px-6 py-3">Orden</th>
                 <th scope="col" class="px-6 py-3">Action</th>
               </tr>
             </thead>
@@ -54,9 +53,9 @@ $itinerarios = $itinerarioObj->index();
 
               ?>
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4"><?php
-                                          echo htmlspecialchars($itinerario['dia']);
-                                          ?></td>
+                    <td class="px-6 py-4">
+                      <?= htmlspecialchars($itinerario['ficha_titulo']); ?>
+                    </td>
                     <td class="px-6 py-4"><?php
                                           echo htmlspecialchars($itinerario['fecha'] ?? 'N/A');
                                           ?></td>
@@ -74,9 +73,6 @@ $itinerarios = $itinerarioObj->index();
                                           ?></td>
                     <td class="px-6 py-4"><?php
                                           echo htmlspecialchars($itinerario['restaurante'] ?? 'N/A');
-                                          ?></td>
-                    <td class="px-6 py-4"><?php
-                                          echo htmlspecialchars($itinerario['orden'] ?? 'N/A');
                                           ?></td>
                     <td class="px-6 py-4">
                       <a href="update.php?id=<?php
