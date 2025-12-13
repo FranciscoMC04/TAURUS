@@ -1,40 +1,51 @@
+
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 
-<body class="h-screen bg-cover bg-center" style="background-image: url('../img/buslogin.jpg');">
+<body class="h-full relative overflow-hidden">
 
-    <div class="flex items-center justify-center h-full bg-black bg-opacity-40">
+    <!-- FONDO PICSUM -->
+    <img src="https://picsum.photos/1920/1080?transport,bus,road"
+        class="fixed inset-0 w-screen h-screen object-cover z-0"
+        alt="Fondo">
+
+    <!-- OVERLAY OSCURO -->
+    <div class="fixed inset-0 bg-black/50 z-10"></div>
+
+    <!-- CONTENIDO -->
+    <div class="relative z-20 flex items-center justify-center h-full">
+
         <div class="backdrop-blur-md bg-white/20 p-8 rounded-xl shadow-2xl w-80">
 
-            <h2 class="text-2xl font-bold text-white text-center mb-6">Iniciar Sesión</h2>
+            <h2 class="text-2xl font-bold text-white text-center mb-6">
+                Iniciar Sesión
+            </h2>
 
-            <!-- <form> -->
-            <label class="text-white font-semibold">Usuario</label>
-            <input type="text" class="w-full p-2 rounded mb-4 bg-white/30 text-white 
-                              placeholder-white/60 focus:outline-none" placeholder="Ingresa tu usuario">
+            <form action="../app/controllers/database/login.php" method="POST">
 
-            <label class="text-white font-semibold">Contraseña</label>
-            <input type="password" class="w-full p-2 rounded mb-4 bg-white/30 text-white 
-                              placeholder-white/60 focus:outline-none" placeholder="••••••••">
+                <label class="text-white font-semibold">Usuario</label>
+                <input name="usuario" required
+                    class="w-full p-2 mb-4 rounded bg-white/30 text-white">
 
-            <a href="" class="w-full mt-2 bg-blue-600 hover:bg-blue-700 
-                               text-white font-semibold py-2 rounded-lg transition">
-                Ingresar
-            </a>
-            <!-- </form> -->
+                <label class="text-white font-semibold">Contraseña</label>
+                <input type="password" name="password" required
+                    class="w-full p-2 mb-4 rounded bg-white/30 text-white">
 
-            <p class="text-white text-center text-sm mt-4">
-                ¿No tienes cuenta?
-                <a href="" class="text-blue-300 hover:underline">Regístrate</a>
-            </p>
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700
+                   text-white py-2 rounded">
+                    Ingresar
+                </button>
+
+            </form>
+
 
         </div>
     </div>
