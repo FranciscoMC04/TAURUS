@@ -30,7 +30,7 @@ class Ficha
 
     public function index2($orderBy = 'fecha_inicio DESC')
     {
-        $sql = "SELECT titulo, descripcion, imagen FROM ficha ORDER BY $orderBy";
+        $sql = "SELECT id, titulo, descripcion, imagen FROM ficha ORDER BY $orderBy";
         $result = $this->conn->query($sql);
 
         $fichas = [];

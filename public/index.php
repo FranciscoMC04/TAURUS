@@ -104,6 +104,9 @@ $usuarioLogueado = isset($_SESSION['usuario']);
         <div class="flex flex-wrap gap-4">
 
           <?php foreach ($fichas as $ficha): ?>
+            <!-- <pre class="text-white"><?php var_dump($ficha); ?></pre> -->
+
+            
             <article class="bg-gray-800 p-4 rounded-lg shadow-md flex w-full md:w-[48%]">
 
               <!-- IMAGEN -->
@@ -128,11 +131,25 @@ $usuarioLogueado = isset($_SESSION['usuario']);
                   </p>
                 </div>
 
-                <a href=""
+                <!-- <a href=""
                   class="mt-3 text-white bg-gray-700 hover:bg-gray-600 rounded-lg
                         text-sm px-4 py-2 text-center">
                   Ver ficha
-                </a>
+                </a> -->
+
+     <?php if (isset($_SESSION['id'])): ?>
+     <a href="/TAURUS/public/app/views/ficha/detalle.php?id=<?= (int)$ficha['id'] ?>"
+        class="mt-3 text-white bg-gray-700 hover:bg-gray-600 rounded-lg text-sm px-4 py-2 text-center">
+        Ver ficha
+     </a>
+     <?php else: ?>
+     <a href="/TAURUS/public/log/login.php"
+        class="mt-3 text-white bg-gray-500 rounded-lg text-sm px-4 py-2 text-center">
+        Inicia sesión
+     </a>
+     <?php endif; ?>
+
+
 
               </div>
             </article>
