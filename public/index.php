@@ -27,6 +27,100 @@ $usuarioLogueado = isset($_SESSION['usuario']);
   <meta charset="UTF-8">
   <title>Home</title>
 
+
+<!-- Botón Flotante del Chatbot -->
+<style>
+.chat-float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: none;
+    animation: bounce 2s infinite;
+}
+
+.chat-float-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 99, 235, 0.6);
+}
+
+.chat-float-button span {
+    font-size: 28px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.chat-modal {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    z-index: 999;
+    animation: slideUp 0.3s ease-out;
+}
+
+.chat-modal.active {
+    display: block;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+
+<button class="chat-float-button" onclick="toggleChat()" id="chatButton">
+    <span>💬</span>
+</button>
+
+
+<div class="chat-modal" id="chatModal">
+    <iframe src="chatbot.html" style="width: 450px; height: 650px; border: none; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);"></iframe>
+</div>
+
+<script>
+function toggleChat() {
+    const modal = document.getElementById('chatModal');
+    const button = document.getElementById('chatButton');
+    
+    if (modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        button.querySelector('span').textContent = '💬';
+    } else {
+        modal.classList.add('active');
+        button.querySelector('span').textContent = '✖️';
+    }
+}
+</script>
+
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
@@ -142,11 +236,16 @@ $usuarioLogueado = isset($_SESSION['usuario']);
         class="mt-3 text-white bg-gray-700 hover:bg-gray-600 rounded-lg text-sm px-4 py-2 text-center">
         Ver ficha
      </a>
+     <a href="/TAURUS/public/log/Dashboard.php"
+        class="mt-3 text-white bg-gray-500 rounded-lg text-sm px-4 py-2 text-center">
+        Ir al Dashboard
+     </a>
      <?php else: ?>
      <a href="/TAURUS/public/log/login.php"
         class="mt-3 text-white bg-gray-500 rounded-lg text-sm px-4 py-2 text-center">
         Inicia sesión
      </a>
+     
      <?php endif; ?>
 
 

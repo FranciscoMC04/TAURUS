@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot TAURUS - Asistente Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --bg-dark: #1f2937;
+            --bg-light: #f9fafb;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .chatbot-container {
+            width: 100%;
+            max-width: 450px;
+            height: 650px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bot-avatar {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .bot-info h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .bot-status {
+            font-size: 12px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f9fafb;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .message.bot .message-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: var(--text-dark);
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .message.bot .message-time {
+            text-align: left;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-reply {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .quick-reply:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            width: fit-content;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-light);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .chat-input-container {
+            padding: 16px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .send-button {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .send-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .travel-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        .travel-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .travel-card p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 4px;
+        }
+
+        .travel-card .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .payment-card {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .payment-card .icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            margin-top: 8px;
+        }
+
+        .promo-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .promo-card p {
+            font-size: 12px;
+            opacity: 0.95;
+        }
+
+        .promo-card .discount {
+            background: rgba(255,255,255,0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <div class="bot-avatar">🚌</div>
+            <div class="bot-info">
+                <h2>Asistente TAURUS</h2>
+                <div class="bot-status">
+                    <span class="status-dot"></span>
+                    En línea 24/7
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-avatar">🤖</div>
+                <div>
+                    <div class="message-content">
+                        ¡Hola! 👋 Bienvenido a <strong>TAURUS</strong>. Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?
+                    </div>
+                    <div class="quick-replies">
+                        <button class="quick-reply" onclick="sendQuickReply('Ver viajes disponibles')">🗺️ Ver viajes</button>
+                        <button class="quick-reply" onclick="sendQuickReply('Ver promociones')">🎉 Promociones</button>
+                        <button class="quick-reply" onclick="sendQuickReply('Reservar')">📝 Reservar</button>
+                        <button class="quick-reply" onclick="sendQuickReply('Medios de pago')">💳 Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <input 
+                type="text" 
+                class="chat-input" 
+                id="userInput" 
+                placeholder="Escribe tu mensaje..."
+                onkeypress="handleKeyPress(event)"
+            >
+            <button class="send-button" onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = 'http://localhost/TAURUS/public';
+        
+        const responses = {
+            'viajes': {
+                text: 'Tenemos destinos increíbles: Tour Lima y Cusco, Factor Sorpresa, Playas del Norte y más.',
+                quickReplies: ['Fechas disponibles', 'Quiero reservar', 'Ver precios']
+            },
+            'promociones': {
+                text: 'Promociones activas: Parejas 20% OFF, Familias 25% OFF, Estudiantes 15% OFF.',
+                quickReplies: ['Aplicar promoción', 'Reservar ahora']
+            },
+            'precios': {
+                text: 'Tours desde S/. 500. Todo incluido: transporte, hospedaje, comidas, guía y seguro.',
+                quickReplies: ['Ver medios de pago', 'Hacer reserva']
+            },
+            'reserva': {
+                text: 'Para reservar necesitas iniciar sesión o registrarte.',
+                quickReplies: ['Iniciar sesión', 'Registrarme']
+            },
+            'medios_pago': {
+                text: 'Aceptamos: Tarjetas, Yape, Plin, Transferencias, Efectivo y Cuotas sin intereses.',
+                quickReplies: ['Pagar ahora', 'Consultar cuotas']
+            },
+            'contacto': {
+                text: 'WhatsApp: +51 904 961 962 | Email: ramostorresbrandhon@taurus.com | Teléfono: (044) 123-4567',
+                quickReplies: ['Enviar WhatsApp', 'Ver ubicación']
+            },
+            'default': {
+                text: 'Puedo ayudarte con viajes, promociones, reservas, precios y contacto.',
+                quickReplies: ['Ver viajes', 'Promociones', 'Reservar', 'Contacto']
+            }
+        };
+
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${isUser ? '👤' : '🤖'}</div>
+                <div>
+                    <div class="message-content">${text}</div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addQuickReplies(replies) {
+            const quickRepliesDiv = document.createElement('div');
+            quickRepliesDiv.className = 'quick-replies';
+            
+            replies.forEach(reply => {
+                const button = document.createElement('button');
+                button.className = 'quick-reply';
+                button.textContent = reply;
+                button.onclick = () => sendQuickReply(reply);
+                quickRepliesDiv.appendChild(button);
+            });
+            
+            const lastMessage = chatMessages.lastElementChild;
+            lastMessage.querySelector('div:last-child').appendChild(quickRepliesDiv);
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">🤖</div>
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('viaje') || lowerMessage.includes('destino') || lowerMessage.includes('tour')) {
+                return responses.viajes;
+            } else if (lowerMessage.includes('promoci') || lowerMessage.includes('descuento') || lowerMessage.includes('oferta')) {
+                return responses.promociones;
+            } else if (lowerMessage.includes('precio') || lowerMessage.includes('costo') || lowerMessage.includes('cuanto')) {
+                return responses.precios;
+            } else if (lowerMessage.includes('reserv') || lowerMessage.includes('inscri')) {
+                return responses.reserva;
+            } else if (lowerMessage.includes('pag') || lowerMessage.includes('tarjeta') || lowerMessage.includes('yape')) {
+                return responses.medios_pago;
+            } else if (lowerMessage.includes('contacto') || lowerMessage.includes('whatsapp') || lowerMessage.includes('telefono')) {
+                return responses.contacto;
+            } else {
+                return responses.default;
+            }
+        }
+
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+            
+            addMessage(message, true);
+            userInput.value = '';
+            
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getResponse(message);
+                addMessage(response.text);
+                if (response.quickReplies) {
+                    addQuickReplies(response.quickReplies);
+                }
+            }, 1500);
+        }
+
+        function sendQuickReply(text) {
+            if (text === 'Iniciar sesión') {
+                window.parent.location.href = `${BASE_URL}/log/login.php`;
+                return;
+            }
+            
+            if (text === 'Registrarme') {
+                window.parent.location.href = `${BASE_URL}/log/registar.php`;
+                return;
+            }
+            
+            if (text === 'Enviar WhatsApp') {
+                window.open('https://wa.me/904761962', '_blank');
+                return;
+            }
+            
+            if (text === 'Ver ubicación') {
+                window.open('https://maps.google.com/?q=Trujillo+Peru', '_blank');
+                return;
+            }
+            
+            userInput.value = text;
+            sendMessage();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        userInput.focus();
+    </script>
+</body>
+</html>

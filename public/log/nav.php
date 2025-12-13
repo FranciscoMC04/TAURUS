@@ -16,6 +16,14 @@
 
       <div i class="flex items-center">
         <div class="flex items-center ms-3">
+
+
+           <a href="https://wa.me/904761962"
+              target="_blank"
+              class="flex items-center mr-8 justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 transition shadow-md">
+          <i  class="fa-brands fa-whatsapp text-white text-5xl "></i>
+          </a>
+
           <div>
             <button id="admin" type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
               <span class="sr-only">Open user menu</span>
@@ -26,7 +34,10 @@
             <div class="px-4 py-3" role="none">
               <p id="user" class="text-sm text-gray-900 dark:text-white" role="none">
               </p>
-              <button id="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" tabindex="-1" id="dropdown-user-logout">Cerrar sesión</button>
+              <a href="/TAURUS/public/log/login.php">
+                 <button  id="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" tabindex="-1" id="dropdown-user-logout">Cerrar sesión</button>
+              </a>
+             
             </div>
           </div>
         </div>
