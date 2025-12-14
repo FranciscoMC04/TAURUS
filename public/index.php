@@ -3,8 +3,20 @@
 session_start();
 require '../public/app/controllers/database/ficha.php';
 
+
+/* ========= TRUCO HOTEL ========= */
+$cwd = getcwd();
+chdir(__DIR__ . '/app/controllers/database');
+require 'hotel.php';
+require 'restaurante.php';
+chdir($cwd);
+/* =============================== */
+
+
 // ===== ORDEN =====
 $orden = $_GET['orden'] ?? 'nuevos';
+$tipo  = $_GET['tipo'] ?? 'viajes';
+
 
 switch ($orden) {
   case 'titulo':
@@ -16,7 +28,13 @@ switch ($orden) {
 }
 $fichaController = new Ficha($conexion);
 $fichas = $fichaController->index2($orderBy);
-$usuarioLogueado = isset($_SESSION['usuario']);
+// $usuarioLogueado = isset($_SESSION['usuario']);
+
+$hotelController = new hotel($conexion);
+$hoteles = $hotelController->index();
+
+$restauranteController = new Restaurante($conexion);
+$restaurantes = $restauranteController->index();
 ?>
 
 <?php include "./log/nav.php" ?>
@@ -136,7 +154,7 @@ function toggleChat() {
     <img src="../public/img/buslogin.jpg" alt="Portada del Home"
       style="width: 100%; aspect-ratio: 3 / 1; object-fit: cover; object-position: center;">
   </figure>
-  <div class="flex justify-end gap-3 p-4 bg-gray-900">
+  <!-- <div class="flex justify-end gap-3 p-4 bg-gray-900">
 
     <?php if (!$usuarioLogueado): ?>
       <a href="../public/log/login.php"
@@ -162,13 +180,17 @@ function toggleChat() {
       </a>
     <?php endif; ?>
 
-  </div>
+  </div> -->
+
+
 
   <!-- CONTENIDO -->
   <section class="mx-auto px-4 sm:px-6 lg:px-8" style="max-width: 100rem; padding-bottom: 45px;">
 
     <h1 class="text-3xl text-gray-300 text-center font-semibold mt-6 mb-6">
-      Lista de Viajes
+      <!-- Lista de Viajes -->
+        Viajes · Hoteles · Restaurantes
+
     </h1>
 
     <div class="flex gap-4">
@@ -177,6 +199,8 @@ function toggleChat() {
         <p class="text-lg text-gray-300 mb-2 font-semibold">Ordenar:</p>
 
         <form method="GET">
+            <input type="hidden" name="tipo" value="<?= htmlspecialchars($tipo) ?>">
+
           <select name="orden"
             onchange="this.form.submit()"
             class="w-full border-gray-300 bg-gray-900 text-gray-300 rounded-md shadow-sm">
@@ -190,13 +214,42 @@ function toggleChat() {
             </option>
 
           </select>
-        </form>
+        </form><br><br>
+
+        <!-- BOTONES -->
+        <div class="mt-6">
+          <p class="text-lg text-gray-300 mb-2 font-semibold">Mostrar:</p>
+
+          <div class="flex flex-col gap-2">
+            <a href="?tipo=viajes&orden=<?= $orden ?>"
+              class="px-4 py-2 rounded-lg text-sm font-medium
+              <?= ($tipo === 'viajes') ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' ?>">
+              Viajes
+            </a>
+
+            <a href="?tipo=hoteles&orden=<?= $orden ?>"
+              class="px-4 py-2 rounded-lg text-sm font-medium
+              <?= ($tipo === 'hoteles') ? 'bg-green-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' ?>">
+              Hoteles
+            </a>
+
+            <a href="?tipo=restaurantes&orden=<?= $orden ?>"
+              class="px-4 py-2 rounded-lg text-sm font-medium
+              <?= ($tipo === 'restaurantes') ? 'bg-yellow-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' ?>">
+              Restaurantes
+            </a>
+          </div>
+        </div>
+
       </div>
+
 
 
       <div class="w-3/4  p-4 rounded-lg">
 
         <div class="flex flex-wrap gap-4">
+ <!-- VIAJES -->
+          <?php if ($tipo === 'viajes'): ?>
 
           <?php foreach ($fichas as $ficha): ?>
             <!-- <pre class="text-white"><?php var_dump($ficha); ?></pre> -->
@@ -207,12 +260,15 @@ function toggleChat() {
               <!-- IMAGEN -->
               <figure class="w-1/3 h-40">
                 <img src="<?= htmlspecialchars($ficha['imagen']) ?>"
-                  alt="<?= htmlspecialchars($ficha['titulo']) ?>"
+                 
                   class="w-full h-40 object-cover rounded-lg">
               </figure>
 
               <!-- CONTENIDO -->
               <div class="w-2/3 p-3 flex flex-col justify-between">
+
+
+              <!-- TEXTO -->
 
                 <div>
                   <h2 class="text-xl text-gray-300 font-semibold">
@@ -232,9 +288,13 @@ function toggleChat() {
                   Ver ficha
                 </a> -->
 
-     <?php if (isset($_SESSION['id'])): ?>
+
+                  <!-- BOTONES (ABAJO DEL TEXTO) -->
+                  <div class="mt-4 flex flex-col gap-2">
+
+     <?php if (isset($_SESSION['usuario'])): ?>
      <a href="/TAURUS/public/app/views/ficha/detalle.php?id=<?= (int)$ficha['id'] ?>"
-        class="mt-3 text-white bg-gray-700 hover:bg-gray-600 rounded-lg text-sm px-4 py-2 text-center">
+        class="w-full text-white bg-gray-700 hover:bg-gray-600 rounded-lg text-sm px-4 py-2 text-center">
         Ver ficha
      </a>
      <a href="/TAURUS/public/log/Dashboard.php"
@@ -244,7 +304,8 @@ function toggleChat() {
      <?php else: ?>
      <a href="/TAURUS/public/log/login.php"
         class="mt-3 text-white bg-gray-500 rounded-lg text-sm px-4 py-2 text-center">
-        Inicia sesión
+        <!-- Inicia sesión -->
+         Mostrar más
      </a>
      
      <?php endif; ?>
@@ -255,12 +316,41 @@ function toggleChat() {
             </article>
           <?php endforeach; ?>
 
-          <?php if (empty($fichas)): ?>
-            <p class="text-gray-300">No hay fichas registradas.</p>
+          <!-- HOTELES -->
+          <?php elseif ($tipo === 'hoteles'): ?>
+
+            <?php foreach ($hoteles as $hotel): ?>
+              <article class="bg-gray-800 p-4 rounded-lg shadow-md flex w-full md:w-[48%]">
+                <div class="w-full p-3">
+                  <h2 class="text-xl text-gray-300 font-semibold"><?= htmlspecialchars($hotel['nombre']) ?></h2>
+                  <hr class="my-2">
+                  <p class="text-sm text-gray-300">📍 <?= htmlspecialchars($hotel['direccion']) ?></p>
+                  <p class="text-sm text-gray-400">☎ <?= htmlspecialchars($hotel['telefono']) ?></p>
+                  <p class="text-sm text-gray-400">⭐ Categoría: <?= htmlspecialchars($hotel['categoria']) ?></p>
+                </div>
+              </article>
+            <?php endforeach; ?>
+
+            <!-- RESTAURANTES -->
+          <?php elseif ($tipo === 'restaurantes'): ?>
+
+            <?php foreach ($restaurantes as $rest): ?>
+              <article class="bg-gray-800 p-4 rounded-lg shadow-md flex w-full md:w-[48%]">
+                <div class="w-full p-3">
+                  <h2 class="text-xl text-gray-300 font-semibold"><?= htmlspecialchars($rest['nombre']) ?></h2>
+                  <hr class="my-2">
+                  <p class="text-sm text-gray-300">📍 <?= htmlspecialchars($rest['direccion']) ?></p>
+                  <p class="text-sm text-gray-400">🍽 Tipo: <?= htmlspecialchars($rest['tipo_comida']) ?></p>
+                  <p class="text-sm text-gray-400">👥 Capacidad: <?= htmlspecialchars($rest['capacidad']) ?></p>
+                </div>
+              </article>
+            <?php endforeach; ?>
+
           <?php endif; ?>
 
         </div>
       </div>
+
     </div>
   </section>
 

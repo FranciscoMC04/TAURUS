@@ -1,3 +1,16 @@
+<!-- <?php
+session_start();
+$usuarioLogueado = isset($_SESSION['usuario']); // ajusta según tu sistema
+?> -->
+
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$usuarioLogueado = isset($_SESSION['usuario']);
+?>
+
+
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
     <div class="flex items-center justify-between">
@@ -18,10 +31,10 @@
         <div class="flex items-center ms-3">
 
 
-           <a href="https://wa.me/904761962"
-              target="_blank"
-              class="flex items-center mr-8 justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 transition shadow-md">
-          <i  class="fa-brands fa-whatsapp text-white text-5xl "></i>
+          <a href="https://wa.me/904761962"
+            target="_blank"
+            class="flex items-center mr-8 justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 transition shadow-md">
+            <i class="fa-brands fa-whatsapp text-white text-5xl "></i>
           </a>
 
           <div>
@@ -32,12 +45,45 @@
           </div>
           <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
             <div class="px-4 py-3" role="none">
-              <p id="user" class="text-sm text-gray-900 dark:text-white" role="none">
-              </p>
-              <a href="/TAURUS/public/log/login.php">
-                 <button  id="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" tabindex="-1" id="dropdown-user-logout">Cerrar sesión</button>
-              </a>
-             
+              <?php if ($usuarioLogueado): ?>
+
+                <span class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 cursor-default">
+                  ¡Hola!
+                </span>
+
+                <p class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 cursor-default">
+                  <?= htmlspecialchars($_SESSION['usuario']) ?>
+                </p>
+              <?php endif; ?>
+
+              <?php if (!$usuarioLogueado): ?>
+
+                <a href="/TAURUS/public/log/login.php"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
+                          dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem">
+                  Iniciar sesión
+                </a>
+
+                <a href="/TAURUS/public/log/registrar.php"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
+                          dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem">
+                  Registrarse
+                </a>
+
+              <?php else: ?>
+
+                <a href="/TAURUS/public/log/logout.php"
+                  class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100
+                          dark:text-red-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem">
+                  Cerrar sesión
+                </a>
+
+              <?php endif; ?>
+
+
             </div>
           </div>
         </div>
