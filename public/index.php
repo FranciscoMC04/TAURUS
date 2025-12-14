@@ -19,6 +19,7 @@ $fichas = $fichaController->index2($orderBy);
 $usuarioLogueado = isset($_SESSION['usuario']);
 ?>
 
+<?php include "./log/nav.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
