@@ -1,15 +1,9 @@
-<!-- <?php
-session_start();
-$usuarioLogueado = isset($_SESSION['usuario']); // ajusta según tu sistema
-?> -->
-
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $usuarioLogueado = isset($_SESSION['usuario']);
 ?>
-
 
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -33,9 +27,11 @@ $usuarioLogueado = isset($_SESSION['usuario']);
 
           <a href="https://wa.me/904761962"
             target="_blank"
-            class="flex items-center mr-8 justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 transition shadow-md">
-            <i class="fa-brands fa-whatsapp text-white text-5xl "></i>
+            class="flex text-[15px] font-semibold items-center mr-8 justify-center text-white hover:text-blue-100 transition gap-2">
+            <i class="fa-brands fa-whatsapp text-white shadow-md text-[24px]"></i>
+            Contactanos
           </a>
+          <div class="w-[2px] h-4 bg-white mr-[36px]"></div>
 
           <div>
             <button id="admin" type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">

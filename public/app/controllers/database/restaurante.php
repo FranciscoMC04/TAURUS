@@ -81,6 +81,33 @@ class Restaurante
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+
+
+     // Traer restaurantes paginados
+    public function getRestaurantesPaginados($limit = 4, $offset = 0)
+    {
+        $sql = "SELECT * FROM restaurante LIMIT ? OFFSET ?";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param("ii", $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $restaurantes = [];
+        while ($row = $result->fetch_assoc()) {
+            $restaurantes[] = $row;
+        }
+        return $restaurantes;
+    }
+
+    // Contar total de restaurantes
+    public function getTotalRestaurantes()
+    {
+        $sql = "SELECT COUNT(*) as total FROM restaurante";
+        $result = $this->conexion->query($sql);
+        $row = $result->fetch_assoc();
+        return intval($row['total']);
+    }
+    
 }
 
 
@@ -99,4 +126,3 @@ if (isset($_GET['action'])) {
         exit();
     }
 }
-

@@ -43,4 +43,33 @@ class Ficha
 
         return $fichas;
     }
+
+    public function getFichasPaginadas($orderBy = 'fecha_inicio DESC', $limit = 4, $offset = 0)
+    {
+        $sql = "SELECT id, titulo, descripcion, imagen 
+                FROM ficha 
+                ORDER BY $orderBy 
+                LIMIT ? OFFSET ?";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii", $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $fichas = [];
+        while ($row = $result->fetch_assoc()) {
+            $fichas[] = $row;
+        }
+
+        return $fichas;
+    }
+
+    public function getTotalFichas()
+    {
+        $sql = "SELECT COUNT(*) as total FROM ficha";
+        $result = $this->conn->query($sql);
+        $row = $result->fetch_assoc();
+        return intval($row['total']);
+    }
+
 }

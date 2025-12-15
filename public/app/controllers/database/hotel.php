@@ -106,4 +106,33 @@ class hotel
         $stmt->close();
         return $hoteles;
     }
+
+     public function getHotelesPaginados($limit = 4, $offset = 0)
+    {
+        $sql = "SELECT id, nombre, direccion, telefono, categoria 
+                FROM hotel
+                LIMIT ? OFFSET ?";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii", $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $hoteles = [];
+        while ($row = $result->fetch_assoc()) {
+            $hoteles[] = $row;
+        }
+
+        return $hoteles;
+    }
+
+    public function getTotalHoteles()
+    {
+        $sql = "SELECT COUNT(*) as total FROM hotel";
+        $result = $this->conn->query($sql);
+        $row = $result->fetch_assoc();
+        return intval($row['total']);
+    }
+
+
 }
