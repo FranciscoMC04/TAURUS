@@ -66,14 +66,14 @@ $totalPages = ceil($totalRestaurantes / $limit);
 <?php include "./log/nav.php"; ?>
 
 <?php if (isset($_SESSION['usuario'])): ?>
-  <div class="fixed top-[11px] left-[1250px] z-[60] flex items-center">
-    <i class="fa-solid fa-circle-info text-white shadow-md text-[15px]"></i>
-    <a href="/TAURUS/public/log/Dashboard.php"
+  <!-- <div class="fixed top-[11px] left-[1250px] z-[60] flex items-center"> -->
+    <!-- <i class="fa-solid fa-circle-info text-white shadow-md text-[15px]"></i> -->
+    <!-- <a href="/TAURUS/public/log/Dashboard.php"
       class="px-3 py-1.5 text-[15px] font-semibold
               text-white hover:text-blue-100
               transition">
       Mas información
-    </a>
+    </a> -->
     <div class="w-[2px] h-4 bg-white ml-[19px]"></div>
   </div>
 <?php endif; ?> 

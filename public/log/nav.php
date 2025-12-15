@@ -25,12 +25,12 @@ $usuarioLogueado = isset($_SESSION['usuario']);
         <div class="flex items-center ms-3">
 
 
-          <a href="https://wa.me/904761962"
-            target="_blank"
-            class="flex text-[15px] font-semibold items-center mr-8 justify-center text-white hover:text-blue-100 transition gap-2">
-            <i class="fa-brands fa-whatsapp text-white shadow-md text-[24px]"></i>
-            Contactanos
-          </a>
+         <a href="https://wa.me/51904761962"
+   target="_blank"
+   class="flex items-center gap-2 px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+  <i class="fa-brands fa-whatsapp text-[22px]"></i>
+  <span>Contáctanos</span>
+</a>
           <div class="w-[2px] h-4 bg-white mr-[36px]"></div>
 
           <div>
